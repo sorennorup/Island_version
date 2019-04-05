@@ -37,7 +37,7 @@ Question = function(){
         
     };
     this.nextSubjectFrame = function(){
-        return "<div class = 'message'>V√¶lg n√¶ste emne</div>";
+        return "<div class = 'message'>Vælg næste emne</div>";
         
         
         } ;

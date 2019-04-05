@@ -2,7 +2,7 @@
 <html>  
     
     <head>
-        <meta charset="UTF-8">
+        <meta charset="Mac-Iceland">
          <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
         <script src = "src/jquery.js"></script>
         <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
@@ -31,12 +31,17 @@
                     <div class = "col-lg-7">
                 <h1>Erhvervsparathed </h1>
                
-                <button id = 'profileid_1' class = "btn" value = 1>Unge</button>
-                <button id = 'profileid_2' class = "btn" value = 2>Vejleder</button>
-                <button id = 'profileid_3' class = "btn" value = 3>M√•l</button>
+                <button id = 'profileid_1' class = "btn" value = 1>Ungur </button>
+                <button id = 'profileid_2' class = "btn" value = 2>Markmi</button>
+                <button id = 'profileid_3' class = "btn" value = 3>Vejleder</button>
 
                 <p id = "intro-message"></p>
                 <div class = "tax-container">
+               
+
+
+
+              <!--
                     <table>
                         <tr>
                             <td>Ikke relevant </td>
@@ -51,24 +56,24 @@
                             <td> 2 </td>
                         </tr>
                            <tr>
-                            <td>P√• vej</td>
+                            <td>På vej</td>
                             <td> 3 </td>
                         </tr>
                             <tr>
-                            <td>Godt p√• vej</td>
+                            <td>Godt på vej</td>
                             <td> 4 </td>
                         </tr>
                            
                            <tr>
-                            <td>I h√∏j grad</td>
+                            <td>I høj grad</td>
                             <td> 5</td>
                         </tr>
                     </table>
-                    
+                    -->
                    
                 </div>       
              <!---   Start the form    --> 
-        <form  name = "my-form" id = "question-form" style = "" action= "measure.html">
+        <form  name = "my-form" id = "question-form" style = "" action= "index.html">
            
             <table width = 100% class = "table-hover" id = "question"> <!-- Start table -->
            
@@ -91,9 +96,9 @@
              event_control.addListenerToProfileLink();
                          
             // Create the profile for the questions// Profile array is containing all the questions of the profile
-             var profile2 = new Profile(profile_array[1],'Vejleder', 2, labelsarray);
-             var profile = new Profile(profile_array[0],'Unge',1,labelsarray);
-             var profile3 = new Profile(profile_array[2],'M√•l',3,labelsarray);
+             var profile2 = new Profile(profile_array[1],'Markmi', 2, labelsarray);
+             var profile = new Profile(profile_array[0],'Ungur',1,labelsarray);
+             var profile3 = new Profile(profile_array[2],'Vejleder',3,labelsarray);
              
              // get the stored result for the Chart
              var storedResults = profile.getResults(); 
@@ -106,7 +111,7 @@
              switch(profile_id){
                 // If profile id is empty then create a intro tekst
                 case undefined:
-                document.getElementById("intro-message").innerHTML = "Klik p√• en profil for at starte";
+                document.getElementById("intro-message").innerHTML = "Klik på en profil for at starte";
                           break;
                         // Load the questions of the 1. profile
                 case '1': profile.getQuestions();
@@ -158,7 +163,7 @@
                 
             </table>   <!-- End the table -->
 
-        <input id = "sub" class = "  btn-success" id = 'next-subject' style = "float:right;" type = "submit" value = "N√¶ste Emne"/>
+        <input id = "sub" class = "  btn-success" id = 'next-subject' style = "float:right;" type = "submit" value = "NÊsta ->"/>
 
          </form> <!-- End of the form -->
     </div>
@@ -278,7 +283,7 @@
                backgroundColor: 'rgba(255,255, 255,0.0)',
                 borderColor: '#333',
                 data: storedResults,
-                borderDash: [10,5]
+                borderWidth: 10
             },
        
             { 
@@ -286,7 +291,7 @@
                 backgroundColor: 'rgba(255, 255, 255,0.0)',
                 borderColor: '#333',
                 data: storedResults2,
-                borderWidth: 10
+                borderWidth: 2
 
            },
            { 
@@ -294,7 +299,7 @@
                 backgroundColor: 'rgba(255, 255, 255,0.0)',
                 borderColor: '#000',
                 data: storedResults3,
-                borderWidth: 2
+                borderDash: [10,5]
 
            } 
         ],   
@@ -319,7 +324,7 @@
             </script>
           
            <script>
-            document.getElementById('results-view-for-pdf').innerHTML = data.resultsForPDF(storedResults,storedResults2,labelsarr) ; 
+            document.getElementById('results-view-for-pdf').innerHTML = PDF.resultsForPDF(storedResults,storedResults2,storedResults3,labelsarr) ; 
            //event_control.clickableLabels();
            document.getElementById('download-pdf').addEventListener("click", PDF.downloadPDF);
             

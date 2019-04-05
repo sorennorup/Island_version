@@ -16,13 +16,40 @@ PrintToPdf = function(){
 		theme: 'striped'
                
     });
-	doc.text(15,20, "Vocational maturity");
+	doc.text(15,20, "Erhvervsparathed ");
     doc.setFontSize(20);
 	doc.addImage(canvasImg, 'PNG', 5, 100, 200,200 );
 	doc.save('canvas.pdf');
 };
             
-	
+	 this.resultsForPDF = function(results1,results2,results3,labelarr){
+        
+        var html;
+        
+        html = labelarr;
+        html += "<tr><td>Ungur</td></tr>" ;
+        html += '<tr>';
+        for(let i = 0; i < results1.length; i++){
+            html += '<td>'+results1[i]+'</td>';
+        }
+        html+="</tr>";
+        html += "<tr><td>Markmið</td></tr>" ;
+        
+         html += '<tr>';
+       for(let j = 0; j < results2.length; j++){
+            html += '<td>'+results2[j]+'</td>';
+        }
+        html+="</tr>";
+         html += "<tr><td>Vejleder</td></tr>" ;
+         html += '<tr>';
+       for(let k = 0; k < results3.length; k++){
+            html += '<td>'+results3[k]+'</td>';
+        }
+        html+="</tr>";
+        
+        return html;
+      };
+    
 	
 	
 	

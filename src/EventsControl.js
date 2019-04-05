@@ -12,7 +12,7 @@ EventsControl = function() {
                 document.getElementById("profileid_2").classList.add("clicked");
                 document.getElementById("profileid_1").classList.remove("clicked");
                 document.getElementById("profileid_3").classList.remove("clicked");
-              } else if(sessionStorage.profilename == "MÃ¥l"){
+              } else if(sessionStorage.profilename == "MŒl"){
                 document.getElementById("profileid_2").classList.remove("clicked");
                 document.getElementById("profileid_1").classList.remove("clicked");
                  document.getElementById("profileid_3").classList.add("clicked");
@@ -45,7 +45,7 @@ EventsControl = function() {
              document.getElementById('profileid_3').addEventListener('click',function(){
                     sessionStorage.profileid = this.value;
                     sessionStorage.setItem('on_load_counter',1);
-                    sessionStorage.profilename = "MÃ¥l";
+                    sessionStorage.profilename = "MŒl";
                     location.reload();
                        
                 });
