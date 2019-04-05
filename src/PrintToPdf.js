@@ -1,28 +1,28 @@
 PrintToPdf = function(){
 	
 	this.downloadPDF = function() {
-    var canvas = document.querySelector('#myChart');
+		var canvas = document.querySelector( '#myChart' );
     
-	//creates image
-	var canvasImg = canvas.toDataURL("image/png", 1.0);
+		//creates image
+		var canvasImg = canvas.toDataURL( "image/png", 1.0 );
     
-	//creates PDF from img
-	var doc = new jsPDF('portrait');
+		//creates PDF from img
+		var doc = new jsPDF( 'portrait' );
     
-    doc.autoTable({
+		doc.autoTable({
        
-        margin: {top:45},
-        html: '#results-view-for-pdf',
-		theme: 'striped'
+			margin: { top:45 },
+			html: '#results-view-for-pdf',
+			theme: 'striped'
                
-    });
-	doc.text(15,20, "Erhvervsparathed ");
-    doc.setFontSize(20);
-	doc.addImage(canvasImg, 'PNG', 5, 100, 200,200 );
-	doc.save('canvas.pdf');
-};
+	   });
+		doc.text( 15,20, "Erhvervsparathed " );
+		doc.setFontSize(20);
+		doc.addImage( canvasImg, 'PNG', 20, 100, 160,160 );
+		doc.save( 'canvas.pdf' );
+	};
             
-	 this.resultsForPDF = function(results1,results2,results3,labelarr){
+	this.resultsForPDF = function( results1,results2,results3,labelarr ){
         
         var html;
         
@@ -33,7 +33,7 @@ PrintToPdf = function(){
             html += '<td>'+results1[i]+'</td>';
         }
         html+="</tr>";
-        html += "<tr><td>Markmið</td></tr>" ;
+        html += "<tr><td><b>Markmið</b></td></tr>" ;
         
          html += '<tr>';
        for(let j = 0; j < results2.length; j++){
@@ -49,15 +49,12 @@ PrintToPdf = function(){
         
         return html;
       };
-    
-	
-	
 	
 };
 
 let PDF = new PrintToPdf();
 //donwload pdf from original canvas
-function downloadPDF() {
+/*function downloadPDF() {
   //var canvas = document.querySelector('#myChart');
 	//creates image
 	//var canvasImg = canvas.toDataURL("image/jpeg", 1.0);
@@ -69,3 +66,4 @@ function downloadPDF() {
 	//doc.addImage(canvasImg, 'JPEG', 10, 10, 280, 150 );
 	doc.save('canvas.pdf');
 }
+*/

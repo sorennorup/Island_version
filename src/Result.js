@@ -56,8 +56,6 @@ Result = function(id,profile_id){
                 resstr += '</tr>';
                 return resstr;
             };
-    
-
            // set the result into the result divs
     this.setResultView = function(){
                  var res_arra = ['result','result2','result3','result4','result5','result6'];
@@ -65,7 +63,7 @@ Result = function(id,profile_id){
                     var keyNum = i+1;
                     var result = 'value'+keyNum+'id'+this.profile_id;
                      
-                    document.getElementById(res_arra[i]).innerHTML = sessionStorage.getItem(result);
+                    document.getElementById(this.res_arra[i]).innerHTML = sessionStorage.getItem(result);
                 }
                 
         };
