@@ -1,0 +1,332 @@
+<!DOCTYPE html>
+<html>  
+    
+    <head>
+        <meta charset="UTF-8">
+         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+        <script src = "src/jquery.js"></script>
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+        <script src =" https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.7.3/Chart.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/bluebird/3.3.5/bluebird.min.js"></script>
+        <script src = "src/loadCounter.js"></script>
+        <script src = "src/Reset.js"></script>
+        <script src = "src/InputControl.js"></script>
+        <script src = "src/Question.js"></script>
+        <script src = "src/Profile.js"></script>
+        <script src = "src/PrintToPdf.js"></script>
+        <script src = "src/Result.js"></script>
+        <script src = "src/QuestionsDataModel.js"></script>
+        <script src = "src/Label.js"></script>
+        <script src = "src/EventsControl.js"></script>
+       
+        <link rel="stylesheet" type="text/css" href="style.css">
+    
+    </head>
+    
+        <body id = "print-body">
+            
+            <div class = "container">
+                <div class = "row">
+                    <div class = "col-lg-7">
+                <h1>Erhvervsparathed </h1>
+               
+                <button id = 'profileid_1' class = "btn" value = 1>Unge</button>
+                <button id = 'profileid_2' class = "btn" value = 2>Vejleder</button>
+                <button id = 'profileid_3' class = "btn" value = 3>Mål</button>
+
+                <p id = "intro-message"></p>
+                <div class = "tax-container">
+                    <table>
+                        <tr>
+                            <td>Ikke relevant </td>
+                            <td> 0 </td>
+                        </tr>
+                         <tr>
+                            <td>Ikke startet endnu </td>
+                            <td> 1</td>
+                        </tr>
+                          <tr>
+                            <td>Vil gerne</td>
+                            <td> 2 </td>
+                        </tr>
+                           <tr>
+                            <td>På vej</td>
+                            <td> 3 </td>
+                        </tr>
+                            <tr>
+                            <td>Godt på vej</td>
+                            <td> 4 </td>
+                        </tr>
+                           
+                           <tr>
+                            <td>I høj grad</td>
+                            <td> 5</td>
+                        </tr>
+                    </table>
+                    
+                   
+                </div>       
+             <!---   Start the form    --> 
+        <form  name = "my-form" id = "question-form" style = "" action= "measure.html">
+           
+            <table width = 100% class = "table-hover" id = "question"> <!-- Start table -->
+           
+            <tr>
+                <th  style = "font-size:30px; color:grey;" align = "left" id = "labelsView"> </th>
+                
+               <!--<td width = "10%"><span id = "counter"></span><span id =  "totalcount"></span> </td>-->
+               
+            </tr>
+     
+    <script>
+            // Init dataobjects
+             var data = new Result(id,1);
+             var data2 = new Result(id,1);
+             var data3 = new Result(id,2);
+             var data5  = new Result(id,3);
+              
+            // Make the profilelinks active 
+             event_control.adClickedToButton();
+             event_control.addListenerToProfileLink();
+                         
+            // Create the profile for the questions// Profile array is containing all the questions of the profile
+             var profile2 = new Profile(profile_array[1],'Vejleder', 2, labelsarray);
+             var profile = new Profile(profile_array[0],'Unge',1,labelsarray);
+             var profile3 = new Profile(profile_array[2],'Mål',3,labelsarray);
+             
+             // get the stored result for the Chart
+             var storedResults = profile.getResults(); 
+             var storedResults2 = profile2.getResults();
+             var storedResults3 = profile3.getResults();
+             var profile_id = sessionStorage.profileid;
+               
+             /************Handle the questions************/
+             
+             switch(profile_id){
+                // If profile id is empty then create a intro tekst
+                case undefined:
+                document.getElementById("intro-message").innerHTML = "Klik på en profil for at starte";
+                          break;
+                        // Load the questions of the 1. profile
+                case '1': profile.getQuestions();
+                          break;
+                        // load the questions of the 2. profile
+                case '2': profile2.getQuestions();
+                          break;
+                          // load the questions of the 3. profile
+                case '3': profile3.getQuestions();
+               
+             }
+            /************End of questionsHandler************/
+                  
+                 
+            /*****Add eventlisteners to the inputfield*****/
+              
+             // Only allow digitis 0 - 4 
+             let input_control = new InputControl();
+             // Check for browser IE11
+             var isIE11 = !!window.MSInputMethodContext && !!document.documentMode;
+             var score_field = document.getElementsByClassName("score");
+            
+             for(var i = 0; i< score_field.length; i++){
+                
+                 score_field[i].addEventListener('keydown',input_control.CheckNumber1);
+                 score_field[i].addEventListener('keyup',input_control.CheckNumber1);
+                  score_field[i].addEventListener('focus', input_control.emptyFieldOnFocus);
+                  score_field[i].addEventListener('focus', input_control.SetSelected);
+                 
+                 if(!isIE11){
+                    //Use the function if the browser is not IE11
+                 score_field[i].addEventListener('focus', input_control.emptyFieldOnFocus);
+                 
+                 }
+                 
+                 score_field[i].addEventListener('focusout',input_control.unDoHeighlight);
+                 
+             }
+                var chosenField = document.getElementsByClassName("next");
+             
+             for(var i = 0; i< chosenField.length; i++){
+                
+                 chosenField[i].addEventListener('mouseover',input_control.heiglightChosenField);
+                 chosenField[i].addEventListener('mouseout',input_control.unDoHeighlight);
+                 
+             }
+            /*****End Add eventlisteners to the inputfield*****/
+    </script>
+                
+            </table>   <!-- End the table -->
+
+        <input id = "sub" class = "  btn-success" id = 'next-subject' style = "float:right;" type = "submit" value = "Næste Emne"/>
+
+         </form> <!-- End of the form -->
+    </div>
+                    <div class = "col-lg-5">
+         
+         <table id = 'results-view-for-pdf'></table>
+           
+           <script>
+             
+           document.getElementById('sub').addEventListener('click',function(){
+             showid = "#"+id;
+            $('#result-container').fadeIn();
+                
+              // If the page is loaded for the first time, the id must be one 
+             if(sessionStorage.getItem('first_load') === null){
+                id = 1;
+              
+                // Set the next id to 2
+                sessionStorage.setItem('first_load',false);
+                // When on_load_counter i set the first time its set to 2
+                sessionStorage.setItem('on_load_counter',2);
+               
+               //Handle the  datastorage at first load
+               switch(profile_id){
+                case '1': let data = new Result(id,1);
+                          data.setData();
+                          
+                          break;
+                case '2': let data4 = new Result(id,2);
+                          data4.setData();
+                          //loadCounter() ;
+                          break;
+                case '3': let data5 = new Result(id,3);
+                          data5.setData();
+                          //loadCounter();
+               }
+  
+             } else {
+                // The rest of the time we use this block to store inputdata
+                switch(profile_id){
+                case '1': let data2 = new Result(id,1);
+                          data2.setData();
+                          loadCounter() ;
+                          break;
+                case '2': let data3 = new Result(id,2);
+                          data3.setData();
+                          loadCounter() ;
+                          break;
+                case '3': let data5 = new Result(id,3);
+                          data5.setData();
+                          loadCounter();
+               }
+               
+              }
+
+            });
+           
+            </script>
+             <div id = "for-print">
+                <div id = "result-container">
+                   
+                  <div id = "profilename"></div>
+                 <div class="panel">
+                    <div class="panel-heading">Resultater</div>
+                    <div class="panel-body"> <table  id = "resultView"> </table></div>
+                </div>
+             
+                   <button class = "btn" id = 'download-pdf'>Download til PDF</button> 
+                 <div id = chartContainer>
+                        <hr/> 
+                 <canvas id = "myChart"> </canvas>
+                  
+              </div>
+                 </div>
+                </div> <!-- End col
+             </div> <!-- End row -->
+                  </div> <!-- End container -->
+          <script>
+            
+            var labels = new Label();
+            let view = document.getElementById("labelsView");
+            var labelsarr = labels.setLabels(view);
+
+          
+           document.getElementById('resultView').innerHTML = labelsarr+data.setResultViewIds();  
+               
+               switch(sessionStorage.profileid){
+                case '1': data.setResultView();
+                          break;
+                case '2': data3.setResultView();
+                          break;
+                case '3': data5.setResultView();
+               }
+               
+            
+               let navigationObj = $('.clickevent');
+               event_control.clickableLabels(navigationObj);
+              
+                
+        var ctx = document.getElementById('myChart').getContext('2d');
+             
+            
+          </script>
+                 
+          <script>
+
+        var chart = new Chart(ctx, {
+    // The type of chart we want to create
+            type: 'radar',
+
+    // The data for our dataset
+   				
+            data: {
+                labels: labelsarray,
+                datasets: [{
+                label:profile.get_profile_name() ,
+               backgroundColor: 'rgba(255,255, 255,0.0)',
+                borderColor: '#333',
+                data: storedResults,
+                borderDash: [10,5]
+            },
+       
+            { 
+                label:profile2.get_profile_name() ,
+                backgroundColor: 'rgba(255, 255, 255,0.0)',
+                borderColor: '#333',
+                data: storedResults2,
+                borderWidth: 10
+
+           },
+           { 
+                label:profile3.get_profile_name() ,
+                backgroundColor: 'rgba(255, 255, 255,0.0)',
+                borderColor: '#000',
+                data: storedResults3,
+                borderWidth: 2
+
+           } 
+        ],   
+    },
+        // Configuration options go here
+        options: {
+                scale: {
+                ticks: {
+        beginAtZero: true,
+        max: 5,
+            
+        },
+        pointLabels: {
+                fontSize: 13,
+  },
+    },
+        maintainAspectRatio: false,
+                 
+     }
+});  
+    
+            </script>
+          
+           <script>
+            document.getElementById('results-view-for-pdf').innerHTML = data.resultsForPDF(storedResults,storedResults2,labelsarr) ; 
+           //event_control.clickableLabels();
+           document.getElementById('download-pdf').addEventListener("click", PDF.downloadPDF);
+            
+           </script>
+      
+<script src="https://unpkg.com/jspdf@latest/dist/jspdf.min.js"></script>
+<script src="https://rawgit.com/someatoms/jsPDF-AutoTable/master/dist/jspdf.plugin.autotable.js"></script>
+        </body>
+ 
+</html>

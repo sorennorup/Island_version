@@ -1,0 +1,148 @@
+body{
+    width: 100%;
+    font-family: calibri;
+    color:#333;
+    
+}
+.score{
+    margin-top:10px;
+}
+.tax-container td{
+    padding: 0px;
+    
+    font-size: 14px;
+}
+.tax-container{
+   
+    width: 200px;
+    
+}
+.tax-container table tr{
+    height:3px;
+}
+button, #sub {
+  margin-top:10px; padding:10px 20px; border-radius:0;
+}
+button {
+    cursor: pointer;
+}
+input {
+    cursor: pointer;
+}
+.btn{
+    cursor: pointer;
+}
+.container{
+    float: left;
+    
+}
+
+.chartjs-render-monitor{
+   
+}
+#myChart{
+   margin-left: 20px;
+}
+
+.test{
+    font-size: 18px;
+}
+
+table {
+    width:100%;
+    border-collapse: collapse;
+}
+.clicked {
+    background-color: #d89c44;
+    color: #fff;
+}
+input { 
+    text-align: center; 
+}
+td {
+   padding: 10px;
+
+   border-color: #e0e0e0;
+   
+}
+
+.next-subject-btn{
+    background-color: #9ca368;
+    color: #fff;
+}
+
+@keyframes fadein {
+    from { opacity: 0; }
+    to   { opacity: 1; }
+}
+.fade-background{
+    position: relative;
+    background-color:#65b78f;
+    color:white;
+    animation: fadein 2s;
+}
+#question{
+    margin-bottom: 20px;
+    background-color: #eeeeee;
+    
+}
+#question{
+   height: 100px;
+}
+.row1{
+    font-weight: 200;
+}
+
+.selected{
+    padding: 5px;
+    background-color: lightgrey;
+    color: #fff;
+}
+
+#labelsView{
+
+    padding:5px;
+}
+#chartContainer{
+    
+    
+    height: 500px;
+    width: 500px;
+}
+#resultView{
+    
+}
+#result-container{
+   margin-top:80px;
+   
+}
+
+table{border-spacing:5px; border-collapse: separate;}
+.label{
+    padding-right:5px;
+    font-size:14px;
+    
+    color: grey;
+    
+}
+#results-view-for-pdf{
+    display:none;
+}
+#download-pdf{
+    position:absolute;
+
+}
+#profilename{
+    color: lightgrey;
+    
+}
+.next{
+    margin-top: 10px;
+    width:100px;
+   
+}
+
+#score{
+    width:100px;
+}
+
