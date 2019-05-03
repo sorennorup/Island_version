@@ -68,7 +68,7 @@ function toZeroArray(values){
  questionArray3[0] = new question("",	"Ég mæti vel í vinnu og á réttum tíma"	,inputvalue[key].val3[0]);
  questionArray3[1]= new question("",	"Ég hvet sjálfa/n mig áfram í starfi",inputvalue[key].val3[1]);
  questionArray3[2] = new question("","Ég er áreiðanleg/ur í starfi",inputvalue[key].val3[2]);
- questionArray3[3] = new question("","Ég tek ábyrgð á vinnustað",inputvalue[key].val3[3]);
+ questionArray3[3] = new question("","Ég tek ábyrgð á mínum verkefnum á vinnustað ",inputvalue[key].val3[3]);
  
 questionArray4 = [];
  questionArray4[0] = new question("","Ég er sveigjanleg/ur varðandi staðsetningu vinnustaðar "	,inputvalue[key].val4[0]);

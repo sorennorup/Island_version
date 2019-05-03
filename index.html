@@ -29,47 +29,44 @@
             <div class = "container">
                 <div class = "row">
                     <div class = "col-lg-7">
-                <h1>Erhvervsparathed </h1>
+                <h1>Mat á starfsþroska  </h1>
                
-                <button id = 'profileid_1' class = "btn" value = 1>Ungur </button>
+                <button id = 'profileid_1' class = "btn" value = 1>Þitt mat (ráðþegi) </button>
                 <button id = 'profileid_2' class = "btn" value = 2>Markmið</button>
-                <button id = 'profileid_3' class = "btn" value = 3>Vejleder</button>
+                <button id = 'profileid_3' class = "btn" value = 3>Mat ráðgjafa </button>
 
                 <p id = "intro-message"></p>
                 <div class = "tax-container">
                
 
-
-
-              <!--
                     <table>
                         <tr>
-                            <td>Ikke relevant </td>
+                            <td>Á ekki við  </td>
                             <td> 0 </td>
                         </tr>
                          <tr>
-                            <td>Ikke startet endnu </td>
+                            <td>Mjög ósammála </td>
                             <td> 1</td>
                         </tr>
                           <tr>
-                            <td>Vil gerne</td>
+                            <td>Frekar ósammála </td>
                             <td> 2 </td>
                         </tr>
                            <tr>
-                            <td>PŒ vej</td>
+                            <td>Hlutlaus </td>
                             <td> 3 </td>
                         </tr>
                             <tr>
-                            <td>Godt pŒ vej</td>
+                            <td>Frekar sammála </td>
                             <td> 4 </td>
                         </tr>
                            
                            <tr>
-                            <td>I h¿j grad</td>
+                            <td>Mjög sammála </td>
                             <td> 5</td>
                         </tr>
                     </table>
-                    -->
+                    
                    
                 </div>       
              <!---   Start the form    --> 
@@ -97,8 +94,8 @@
                          
             // Create the profile for the questions// Profile array is containing all the questions of the profile
              var profile2 = new Profile(profile_array[1],'Markmið', 2, labelsarray);
-             var profile = new Profile(profile_array[0],'Ungur',1,labelsarray);
-             var profile3 = new Profile(profile_array[2],'Vejleder',3,labelsarray);
+             var profile = new Profile(profile_array[0],'Þitt mat (ráðþegi) ',1,labelsarray);
+             var profile3 = new Profile(profile_array[2],'Mat ráðgjafa ',3,labelsarray);
              
              // get the stored result for the Chart
              var storedResults = profile.getResults(); 
@@ -111,7 +108,7 @@
              switch(profile_id){
                 // If profile id is empty then create a intro tekst
                 case undefined:
-                document.getElementById("intro-message").innerHTML = "Klik pŒ en profil for at starte";
+                document.getElementById("intro-message").innerHTML = "Smelltu á viðeigandi hlekk til að byrja ";
                           break;
                         // Load the questions of the 1. profile
                 case '1': profile.getQuestions();
@@ -227,11 +224,11 @@
                    
                   <div id = "profilename"></div>
                  <div class="panel">
-                    <div class="panel-heading">Resultater</div>
+                    <div class="panel-heading">Niðurstöður</div>
                     <div class="panel-body"> <table  id = "resultView"> </table></div>
                 </div>
              
-                   <button class = "btn" id = 'download-pdf'>Download til PDF</button> 
+                   <button class = "btn" id = 'download-pdf'>Hlaða niður PDF skjali </button> 
                  <div id = chartContainer>
                         <hr/> 
                  <canvas id = "myChart"> </canvas>
