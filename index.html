@@ -2,7 +2,7 @@
 <html>  
     
     <head>
-        
+         <meta charset="8859-10">
          <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
         <script src = "src/jquery.js"></script>
         <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
@@ -96,6 +96,12 @@
              var profile2 = new Profile(profile_array[1],'Markmið', 2, labelsarray);
              var profile = new Profile(profile_array[0],'Þitt mat (ráðþegi) ',1,labelsarray);
              var profile3 = new Profile(profile_array[2],'Mat ráðgjafa ',3,labelsarray);
+             
+              let fullPDFQuestions = new Question();
+             let fullProfile1 = fullPDFQuestions.fullPDFdata(profile.questions,labelsarray);
+             let fullProfile2 = fullPDFQuestions.fullPDFdata(profile2.questions,labelsarray);
+             let fullProfile3 = fullPDFQuestions.fullPDFdata(profile3.questions,labelsarray);
+             console.log(fullProfile1);
              
              // get the stored result for the Chart
              var storedResults = profile.getResults(); 
@@ -228,7 +234,10 @@
                     <div class="panel-body"> <table  id = "resultView"> </table></div>
                 </div>
              
-                   <button class = "btn" id = 'download-pdf'>Hlaða niður PDF skjali </button> 
+                   <button class = "btn btn-secondary" id = 'download-pdf'>Hlaða niður PDF skjali</button> 
+                                      <button class = "btn btn-secondary" id = 'download-full-pdf'>Hlaða niður PDF skjali(full version) </button> 
+                   
+
                  <div id = chartContainer>
                         <hr/> 
                  <canvas id = "myChart"> </canvas>
@@ -261,7 +270,11 @@
               
                 
         var ctx = document.getElementById('myChart').getContext('2d');
-             
+             let PDF = new PrintToPdf(storedResults,storedResults2,storedResults3,labelsarray);
+           //event_control.clickableLabels();
+           document.getElementById('download-pdf').addEventListener("click", PDF.downloadResultsOnly);
+           document.getElementById('download-full-pdf').addEventListener("click", PDF.downloadFullPDF);
+            
             
           </script>
                  
@@ -321,13 +334,15 @@
             </script>
           
            <script>
-            document.getElementById('results-view-for-pdf').innerHTML = PDF.resultsForPDF(storedResults,storedResults2,storedResults3,labelsarr) ; 
+            //document.getElementById('results-view-for-pdf').innerHTML = PDF.resultsForPDF(storedResults,storedResults2,storedResults3,labelsarr) ; 
            //event_control.clickableLabels();
-           document.getElementById('download-pdf').addEventListener("click", PDF.downloadPDF);
+          // document.getElementById('download-pdf').addEventListener("click", PDF.downloadPDF);
             
            </script>
-      
-<script src="https://unpkg.com/jspdf@latest/dist/jspdf.min.js"></script>
+   <!--<script src="https://unpkg.com/jspdf@latest/dist/jspdf.min.js"></script>-->
+<!--<script type="text/javascript" src="jsPDF-master/dist/jspdf.debug.js"></script>-->
+<script type="text/javascript" src="pdfmake-master/build/pdfmake.min.js"></script>
+<script type="text/javascript" src="pdfmake-master/build/vfs_fonts.js"></script>
 <script src="https://rawgit.com/someatoms/jsPDF-AutoTable/master/dist/jspdf.plugin.autotable.js"></script>
         </body>
  

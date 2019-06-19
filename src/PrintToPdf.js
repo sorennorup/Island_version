@@ -1,69 +1,150 @@
-PrintToPdf = function(){
+PrintToPdf = function(results1,results2,results3,labelarr){
 	
-	this.downloadPDF = function() {
-		var canvas = document.querySelector( '#myChart' );
-    
+  this.downloadResultsOnly = function(){
+	
+	var canvas = document.querySelector( '#myChart' );
+		
 		//creates image
 		var canvasImg = canvas.toDataURL( "image/png", 1.0 );
-    
-		//creates PDF from img
-		var doc = new jsPDF( 'portrait' );
-    
-		doc.autoTable({
-       
-			margin: { top:45 },
-			html: '#results-view-for-pdf',
-			theme: 'striped'
-               
-	   });
-		doc.text( 15,20, "Erhvervsparathed " );
-		doc.setFontSize(20);
-		doc.addImage( canvasImg, 'PNG', 20, 100, 160,160 );
-		doc.save( 'canvas.pdf' );
-	};
-            
-	this.resultsForPDF = function( results1,results2,results3,labelarr ){
-        
-        var html;
-        
-        html = labelarr;
-        html += "<tr><td>Ungur</td></tr>" ;
-        html += '<tr>';
-        for(let i = 0; i < results1.length; i++){
-            html += '<td>'+results1[i]+'</td>';
-        }
-        html+="</tr>";
-        html += "<tr><td><b>Markmið</b></td></tr>" ;
-        
-         html += '<tr>';
-       for(let j = 0; j < results2.length; j++){
-            html += '<td>'+results2[j]+'</td>';
-        }
-        html+="</tr>";
-         html += "<tr><td>Vejleder</td></tr>" ;
-         html += '<tr>';
-       for(let k = 0; k < results3.length; k++){
-            html += '<td>'+results3[k]+'</td>';
-        }
-        html+="</tr>";
-        
-        return html;
-      };
+		pdfMake.setFonts(fonts);
+		
+	
+		var dd = {
+		
+	content: [
+		
+		{text: 'Niðurstöður', style: 'header'},
+		
+		{
+			style: 'tableExample',
+			table: {
+				headerRows: 1,
+				body: [labelarr,
+						[{text: 'Þitt mat (ráðþegi)',colSpan: 6, alignment: 'left'}],
+						results1,
+						[{text: 'Markmið', colSpan: 6, alignment: 'left'}],
+
+						results2,
+						[{text: 'Mat ráðgjafa',  colSpan: 6, alignment: 'left'}],
+
+						results3
+					  ]
+			},
+				
+			layout: 'headerLineOnly'
+		},
+		{
+			image:canvasImg,
+	        width: 450
+		}
+	
+	],
+		};
+	pdfMake.createPdf(dd).download();
+  };
+	
+	
+	this.downloadFullPDF = function() {
+		var canvas = document.querySelector( '#myChart' );
+		
+		//creates image
+		var canvasImg = canvas.toDataURL( "image/png", 1.0 );
+		pdfMake.setFonts(fonts);
+		
+	
+		var dd = {
+		
+	content: [
+		
+		{text: 'Resultater', style: 'header'},
+		
+		{
+			style: 'tableExample',
+			table: {
+				headerRows: 1,
+				body: [labelarr,
+						[{text: 'Þitt mat (ráðþegi)',colSpan: 6, alignment: 'left'}],
+						results1,
+						[{text: 'Markmið', colSpan: 6, alignment: 'left'}],
+
+						results2,
+						[{text: 'Mat ráðgjafa',  colSpan: 6, alignment: 'left'}],
+
+						results3
+					  ]
+			},
+				
+			layout: 'headerLineOnly'
+		},
+		{
+			image:canvasImg,
+	        width: 450
+		},
+		{text: 'Þitt mat (ráðþegi)', style: 'header'},	
+		
+		{
+			style: 'tableExample',
+			
+			table: {
+			
+				body:
+				
+				fullProfile1,
+				
+			},
+			
+			layout: 'headerLineOnly'
+		},
+		
+		{text: 'Markmið', style: 'header'},	
+		
+		{
+			style: 'tableExample',
+			
+			table: {
+			
+				body: fullProfile2
+				
+				
+			},
+			
+			layout: 'headerLineOnly'
+		},
+		{text: 'Mat ráðgjafa', style: 'header'},	
+		
+		{
+			style: 'tableExample',
+			
+			table: {
+			
+				body:
+				
+				fullProfile3,
+				
+			},
+			
+			layout: 'headerLineOnly'
+		},
+	],
+	styles: {
+		header: {
+			fontSize: 25,
+			bold: true,
+			alignment: 'justify'
+		}
+	}
 	
 };
+				
+		pdfMake.createPdf(dd).download();
+    
+	
+	};
+            
+	
+		
+};
 
-let PDF = new PrintToPdf();
-//donwload pdf from original canvas
-/*function downloadPDF() {
-  //var canvas = document.querySelector('#myChart');
-	//creates image
-	//var canvasImg = canvas.toDataURL("image/jpeg", 1.0);
-  
-	//creates PDF from img
-	var doc = new jsPDF('landscape');
-	doc.setFontSize(20);
-	doc.text(15, 15, "Cool Chart");
-	//doc.addImage(canvasImg, 'JPEG', 10, 10, 280, 150 );
-	doc.save('canvas.pdf');
-}
-*/
+
+
+

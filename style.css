@@ -21,7 +21,7 @@ body{
     height:3px;
 }
 button, #sub {
-  margin-top:10px; padding:10px 20px; border-radius:0;
+  margin-top:10px; padding:10px 20px; border-radius:0; border:none;
 }
 button {
     cursor: pointer;
@@ -103,18 +103,21 @@ td {
 
     padding:5px;
 }
-#chartContainer{
-    
-    
+#chartContainer{   
     height: 500px;
     width: 500px;
 }
-#resultView{
-    
+#resultView .label{
+    vertical-align: top;
 }
 #result-container{
    margin-top:80px;
+   width:100%;
    
+}
+#download-pdf{
+   
+    
 }
 
 table{border-spacing:5px; border-collapse: separate;}
@@ -129,17 +132,36 @@ table{border-spacing:5px; border-collapse: separate;}
     display:none;
 }
 #download-pdf{
-    position:absolute;
+   margin-right: 10px;
+   background-color:#28a745;
+    border:none;
+    
 
+}
+#download-pdf:hover{
+    
+   background-color: #d89c44;
+}
+#download-full-pdf{
+     background-color: #28a745;
+     border:none;
+    
+}
+#download-full-pdf:hover{
+    background-color: #d89c44;
 }
 #profilename{
     color: lightgrey;
     
 }
+#sub:hover{
+    background-color: #d89c44;
+    border:none;
+}
 .next{
     margin-top: 10px;
     width:100px;
-   
+    border:none;
 }
 
 #score{

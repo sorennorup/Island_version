@@ -36,14 +36,13 @@ Question = function(){
             });
         
     };
+   
     this.nextSubjectFrame = function(){
-        return "<div class = 'message'>V¾lg n¾ste emne</div>";
+        return "<div class = 'message'>V?lg n?ste emne</div>";
         
         
         } ;
-    this.showQuestionCount = function(){
-        
-    }
+   
      
     
     this.inputWithRadioContainer = function(val){
@@ -119,6 +118,26 @@ Question = function(){
                 
             }
         }
+    };
+    
+   this.fullPDFdata = function(allQuestions,labelsarray){
+       let questions_and_score = [];
+             
+             for(var i = 0; allQuestions.length > i; i++){
+                 for(var j = 0; j < allQuestions[i].length; j++){
+                    if(j === 0){
+                        let parameter_label = labelsarray[i];
+                        console.log(labelsarray[i]);
+                        
+                        let label = [{text: parameter_label,colSpan: 2, alignment: 'left',fontSize: 16, bold: true}, ""];
+                        questions_and_score.push(label);
+                    }
+                     var prop = [allQuestions[i][j].question, allQuestions[i][j].inputvalue];
+                     questions_and_score.push(prop);
+                 }
+             }
+             return questions_and_score;
+       
     };
  
  };
