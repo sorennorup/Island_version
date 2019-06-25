@@ -2,7 +2,7 @@
 <html>  
     
     <head>
-        <meta charset="UTF-8">
+       
          <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
         <script src = "src/jquery.js"></script>
         <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
@@ -34,9 +34,9 @@
                 <h1>Erhvervsparathed </h1>
                    
                <p id = "intro-message"></p>
-                <button id = 'profileid_1' class = "btn profile-menu-item" value = 1>Ãžitt mat (rÃ¡Ã°Ã¾egi) </button>
-                <button id = 'profileid_2' class = "btn profile-menu-item" value = 2>MarkmiÃ°</button>
-                <button id = 'profileid_3' class = "btn profile-menu-item" value = 3>Mat rÃ¡Ã°gjafa </button>
+                 <button id = 'profileid_1' class = "btn profile-menu-item" value = 1>Þitt mat (ráðþegi) </button>
+                <button id = 'profileid_2' class = "btn profile-menu-item" value = 2>Markmið</button>
+                <button id = 'profileid_3' class = "btn profile-menu-item" value = 3>Mat ráðgjafa </button>
               <script>
               
                 
@@ -67,9 +67,9 @@
              event_control.addListenerToProfileLink();
                          
             // Create the profile for the questions// Profile array is containing all the questions of the profile
-             var profile2 = new Profile(profile_array[1],'MarkmiÃ°', 2, labelsarray);
-             var profile = new Profile(profile_array[0],'Ãžitt mat (rÃ¡Ã°Ã¾egi) ',1,labelsarray);
-             var profile3 = new Profile(profile_array[2],'Mat rÃ¡Ã°gjafa ',3,labelsarray);
+             var profile2 = new Profile(profile_array[1],'Markmið', 2, labelsarray);
+             var profile = new Profile(profile_array[0],'Þitt mat (ráðþegi) ',1,labelsarray);
+             var profile3 = new Profile(profile_array[2],'Mat ráðgjafa ',3,labelsarray);
 
              // get the stored result for the Chart
              var storedResults = profile.getResults(); 
@@ -85,7 +85,7 @@
 
          </form> <!-- End of the form -->
          <div class="panel">
-                    <div class="panel-heading">NiÃ°urstÃ¶Ã°ur <span id = "profilename"></span></div>
+                    <div class="panel-heading">Niðurstöður<span id = "profilename"></span></div>
                     <div class="panel-body">
                         <form action = "resultInsert.html"><table  id = "resultView"> </table>
                     
@@ -140,7 +140,7 @@
           switch(profile_id){
                 // If profile id is empty then create a intro tekst
                 case undefined:
-                document.getElementById("intro-message").innerHTML = "Klik pÃ¥ en profil for at starte";
+                document.getElementById("intro-message").innerHTML = "Klik pŒ en profil for at starte";
                           break;
                         // Load the questions of the 1. profile
             case '1':

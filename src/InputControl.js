@@ -34,6 +34,37 @@ InputControl = function() {
               }    
         }
     };
+    
+     this.CheckNumberManual = function() {
+        var letters = /^[A-Za-z]+$/;
+        console.log('keydown');
+           
+        if (this.value.length > 3) {
+             //alert(this.value.substring(1,2));
+            if(this.value.substring(1,2) > 5){
+               
+               this.value = this.value.substring(0,1);
+            }
+
+            if(this.value.match(letters)){
+                
+                this.value = this.value.substring(0,1);
+              }
+            this.value = this.value.substring(1,2);
+            
+        } else {
+            if((this.value < 0) || (this.value > 5)) {
+                
+                this.value = this.value.substring(0, 0);
+            }
+
+            if(this.value.match(letters)){
+                
+                this.value = 0;
+              }    
+          
+        }
+    };
 
     this.SetSelected = function() {
         this.select();
