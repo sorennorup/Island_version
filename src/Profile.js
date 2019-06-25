@@ -23,7 +23,9 @@ Profile = function(questions,profile_name,profile_id,labels){
                 label = labelsarray[i];       
                 }
             }
-             document.getElementById( "labelsView" ).innerHTML = label;          
+              document.getElementById("labelsView").innerHTML = label +
+             '<br><span style = "font-size: 16px; font-style: italic;">Answer questions or </span>'+
+             '<a style = "font-size:16px;" href = "resultInsert.html"> insert results direct -></a>';        
     };
     this.getResults = function(){
        
