@@ -4,6 +4,12 @@ body{
     color:#333;
     
 }
+a{
+    color: #28a745;
+}
+a:hover{
+    color: #d89c44;
+}
 .score{
     margin-top:10px;
 }
@@ -20,8 +26,27 @@ body{
 .tax-container table tr{
     height:3px;
 }
+#download-pdf{
+   margin-right: 10px;
+   background-color:#28a745;
+    border:none;
+    
+
+}
+#download-pdf:hover{
+    
+   background-color: #d89c44;
+}
+#download-full-pdf{
+     background-color: #28a745;
+     border:none;
+    
+}
+#download-full-pdf:hover{
+    background-color: #d89c44;
+}
 button, #sub {
-  margin-top:10px; padding:10px 20px; border-radius:0; border:none;
+  margin-top:10px; padding:10px 20px; border-radius:0;border:none;
 }
 button {
     cursor: pointer;
@@ -31,6 +56,15 @@ input {
 }
 .btn{
     cursor: pointer;
+    color: #fff;
+}
+.btn:hover{
+    background-color:#d89c44 !important;
+    color: #fff !important;
+}
+.profile-menu-item{
+    
+    color: #333;
 }
 .container{
     float: left;
@@ -70,7 +104,18 @@ td {
     background-color: #9ca368;
     color: #fff;
 }
-
+#sub:hover{
+    background-color: #d89c44;
+    border:none;
+}
+#manual-sub{
+    float:right;
+    background-color:#28a745;
+    color: #fff;
+}
+#resultView td{
+   padding: 0px;
+}
 @keyframes fadein {
     from { opacity: 0; }
     to   { opacity: 1; }
@@ -103,21 +148,18 @@ td {
 
     padding:5px;
 }
-#chartContainer{   
+#chartContainer{
+    
+    
     height: 500px;
     width: 500px;
 }
-#resultView .label{
-    vertical-align: top;
+#resultView{
+    
 }
 #result-container{
    margin-top:80px;
-   width:100%;
    
-}
-#download-pdf{
-   
-    
 }
 
 table{border-spacing:5px; border-collapse: separate;}
@@ -132,39 +174,25 @@ table{border-spacing:5px; border-collapse: separate;}
     display:none;
 }
 #download-pdf{
-   margin-right: 10px;
-   background-color:#28a745;
-    border:none;
+    margin-left: 10px;
     
 
-}
-#download-pdf:hover{
-    
-   background-color: #d89c44;
-}
-#download-full-pdf{
-     background-color: #28a745;
-     border:none;
-    
-}
-#download-full-pdf:hover{
-    background-color: #d89c44;
 }
 #profilename{
     color: lightgrey;
     
 }
-#sub:hover{
-    background-color: #d89c44;
-    border:none;
-}
 .next{
     margin-top: 10px;
     width:100px;
-    border:none;
+   
 }
 
 #score{
     width:100px;
 }
-
+.logos{
+    max-width: 1400px !important;
+    margin-top: 20px;
+       
+}

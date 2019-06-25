@@ -34,9 +34,9 @@
                 <h1>Erhvervsparathed </h1>
                    
                <p id = "intro-message"></p>
-                <button id = 'profileid_1' class = "btn profile-menu-item" value = 1>Unge</button>
-                <button id = 'profileid_2' class = "btn profile-menu-item" value = 2>Mål</button>
-                <button id = 'profileid_3' class = "btn profile-menu-item" value = 3>Vejleder</button>
+                <button id = 'profileid_1' class = "btn profile-menu-item" value = 1>Þitt mat (ráðþegi) </button>
+                <button id = 'profileid_2' class = "btn profile-menu-item" value = 2>Markmið</button>
+                <button id = 'profileid_3' class = "btn profile-menu-item" value = 3>Mat ráðgjafa </button>
               <script>
               
                 
@@ -50,7 +50,7 @@
            
             <tr>
                 <th  style = "font-size:20px; " align = "left" id = "labelsView">
-                Du kan nu indtaste resultaterne manuelt 0 - 5 med 1 decimal (eks 1.4) <br/>
+                Insert result directly. 0 - 5, one decimal (eks 1.4) <br/>
                 <a href = "index.html"><- Return to questions</a></th>
     
             </tr>
@@ -67,9 +67,9 @@
              event_control.addListenerToProfileLink();
                          
             // Create the profile for the questions// Profile array is containing all the questions of the profile
-             var profile2 = new Profile(profile_array[1],'Mål', 2, labelsarray);
-             var profile = new Profile(profile_array[0],'Unge',1,labelsarray);
-             var profile3 = new Profile(profile_array[2],'Vejleder',3,labelsarray);
+             var profile2 = new Profile(profile_array[1],'Markmið', 2, labelsarray);
+             var profile = new Profile(profile_array[0],'Þitt mat (ráðþegi) ',1,labelsarray);
+             var profile3 = new Profile(profile_array[2],'Mat ráðgjafa ',3,labelsarray);
 
              // get the stored result for the Chart
              var storedResults = profile.getResults(); 
@@ -85,7 +85,7 @@
 
          </form> <!-- End of the form -->
          <div class="panel">
-                    <div class="panel-heading">Resultater <span id = "profilename"></span></div>
+                    <div class="panel-heading">Niðurstöður <span id = "profilename"></span></div>
                     <div class="panel-body">
                         <form action = "resultInsert.html"><table  id = "resultView"> </table>
                     
