@@ -38,7 +38,11 @@ InputControl = function() {
      this.CheckNumberManual = function() {
         var letters = /^[A-Za-z]+$/;
         console.log('keydown');
-           
+            //If the user inserts comma seperator it will be replaced with the prefered dot 
+         if(this.value.substring(1,2) == ','){
+               
+              this.value = this.value.replace(",",".");
+            }  
         if (this.value.length > 3) {
              //alert(this.value.substring(1,2));
             if(this.value.substring(1,2) > 5){
