@@ -2,59 +2,113 @@
 <html>  
     
     <head>
-       
+        <meta charset="Mac-iceland">
          <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
         <script src = "src/jquery.js"></script>
-       <script src =" bootstrap/js/bootstrap.min.js"></script>
+         <script src =" bootstrap/js/bootstrap.min.js"></script>
          <link rel="stylesheet" type="text/css" href="bootstrap/css/bootstrap.min.css">
         <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.7.3/Chart.js"></script>
+        <!--<script src="https://cdnjs.cloudflare.com/ajax/libs/bluebird/3.3.5/bluebird.min.js"></script>-->
+        <script src = "src/wysiwyg.js"></script>	
         <script src = "src/loadCounter.js"></script>
+        <script src = "src/View.js"></script>
         <script src = "src/Reset.js"></script>
         <script src = "src/InputControl.js"></script>
         <script src = "src/Question.js"></script>
         <script src = "src/Profile.js"></script>
         <script src = "src/PrintToPdf.js"></script>
         <script src = "src/Result.js"></script>
+        <script src = "src/Comment.js"></script>  
         <script src = "src/QuestionsDataModel.js"></script>
         <script src = "src/Label.js"></script>
         <script src = "src/EventsControl.js"></script>
-       
         <link rel="stylesheet" type="text/css" href="style.css">
     
     </head>
     
         <body id = "print-body">
             
-            <div class = "container">
-                <div class = "row">
+          <div class = "container">
+            <div class = "row">
                     
-                    <div class = "col-lg-7">
+               <div class = "col-lg-7">
                      
-                <h1>Mat á starfsþroska  </h1>
+               <h1>Erhvervsparathed </h1>
                    
                <p id = "intro-message"></p>
-                 <button id = 'profileid_1' class = "btn profile-menu-item" value = 1>Þitt mat (ráðþegi) </button>
+                <div class = 'profile-buttons'>
+                <button id = 'profileid_1' class = "btn profile-menu-item" value = 1>Þitt mat (ráðþegi) </button>
                 <button id = 'profileid_2' class = "btn profile-menu-item" value = 2>Markmið</button>
                 <button id = 'profileid_3' class = "btn profile-menu-item" value = 3>Mat ráðgjafa </button>
-              <script>
-              
-                
-                
-              </script>   
-                
-             <!---   Start the form    --> 
-        <form class = "my-form" id = "question-form" style = "" action= "measure.html">
+                </div>
+
+               <div class = " col-lg-6 card comment-card">
+                     
+                    <a id = "accordion-link" class="accordion-header" data-toggle="collapse"
+                    href="#collapseCommentBox"aria-expanded="false" aria-controls="collapseCommentBox">
+                   Comments<span id = "collapse-sign" style = "float:right;margin-top:-10px; font-size:30px;width:50px;">+</span>
+                    </a>
+                     <div class="collapse " id="collapseCommentBox">
+                    
+                    <div class = "card-body rounded" id = "comment">
+                      
+                    </div>
+                    <br>
+                    </div>  
+                </div>
+               <!----------***** Commentbox stuff *****------------->
+                <!--  modalboxview here -->
+                <div id = "modal-box"></div>
+                 <!-- End modalboxview here -->
+          <script>
+            
+                    $("#accordion-link").click(function(){
+                        if(!$("#collapseCommentBox").hasClass('show')){
+                            document.getElementById('collapse-sign').innerHTML = "-  ";
+                        }
+                        else {
+                             document.getElementById('collapse-sign').innerHTML = "+";
+                        }
+                        
+                        
+                        });
+                    
+               
+        
+            // Create the viewobject
+            let viewHandler = new View();
+            // Insert the modalboxview inside the div
+            document.getElementById('modal-box').innerHTML = viewHandler.modalBoxView();
+            // Display the previus text in the modalview
+            viewHandler.displayTextInView();
+            // Display the comment in the commentbox
+            newComment.displayComment();
+            // After submitting new comments and closing the popupwindow the commentbox appears the next pageload
+            viewHandler.showCommentBoxAfterSubmit();
+            // Click event to store the new comment
+            document.getElementById('submitComment').addEventListener('click',function(e){     
+            
+            newComment.storeComment();
+            
+            
+            });
+    </script>
            
-            <table width = "200px" class = "table-hover" id = "question"> <!-- Start table -->
+        
+         <!----------***** End Commentbox stuff *****------------->
+             <!---   Start the form    --> 
+        <form class = "my-form" id = "question-form" style = "" action= "index.html">
+           
+            <table style = "display:none;" width = "200px" class = "table-hover" id = "question"> <!-- Start table -->
            
             <tr>
                 <th  style = "font-size:20px; " align = "left" id = "labelsView">
-                Insert result directly. 0 - 5, one decimal (eks 1.4) <br/>
-                <a href = "index.html"><- Return to questions</a></th>
+               </th>
     
             </tr>
-     
+    
     <script>
+           
             // Init dataobjects
              var data = new Result(id,1);
              var data2 = new Result(id,1);
@@ -65,50 +119,45 @@
              event_control.adClickedToButton();
              event_control.addListenerToProfileLink();
                          
-            // Create the profile for the questions// Profile array is containing all the questions of the profile
-             var profile2 = new Profile(profile_array[1],'Markmið', 2, labelsarray);
-             var profile = new Profile(profile_array[0],'Þitt mat (ráðþegi) ',1,labelsarray);
-             var profile3 = new Profile(profile_array[2],'Mat ráðgjafa ',3,labelsarray);
+             // Create the profile for the questions// Profile array is containing all the questions of the profile
+             let profile2 = new Profile(profile_array[1],'Markmið', 2, labelsarray);
+             let profile = new Profile(profile_array[0],'Þitt mat (ráðþegi) ',1,labelsarray);
+             let profile3 = new Profile(profile_array[2],'Mat ráðgjafa ',3,labelsarray);
 
              // get the stored result for the Chart
              var storedResults = profile.getResults(); 
              var storedResults2 = profile2.getResults();
              var storedResults3 = profile3.getResults();
              var profile_id = sessionStorage.profileid;
-               
-           
-    </script>
-    
                 
+    </script>
+            
             </table>   <!-- End the table -->
-
+ 
          </form> <!-- End of the form -->
-         <div class="panel">
-                    <div class="panel-heading">Niðurstöður<span id = "profilename"></span></div>
-                    <div class="panel-body">
-                        <form action = "resultInsert.html"><table  id = "resultView"> </table>
-                    
-                    <input id = "manual-sub"  class = "btn btn-succes"type = "submit" value= "Save ->" />
-                    </form>
-                    </div>
-                </div>    
-    </div>
-                    
-                    <div class = "col-lg-5">
+         
+         <div id = "panel" class="panel"> </div>
            
+        <script> document.getElementById('panel').innerHTML = viewHandler.displayManualInputView();</script>
+         
 
-           
+         </div>
+                    
+         <div class = "col-lg-5">
              <div id = "for-print">
-                <div id = "result-container">
+                <div id = "result-container" class = "result-direct">
                    
                   <div id = "profilename"></div>
                                   
-                   <button class = "btn" id = 'download-pdf'>Hlaða niður PDF skjali</button> 
                  <div id = chartContainer>
                         <hr/> 
                  <canvas id = "myChart"> </canvas>
                   
               </div>
+                     <button class = "btn btn-secondary" id = 'download-pdf'>Hlaða niður PDF skjali</button> 
+                     <button class = "btn btn-secondary" id = 'download-full-pdf'>Hlaða niður PDF skjali(full version) </button> 
+                   
+
                  </div>
                 </div> <!-- End col -->
                  
@@ -117,6 +166,11 @@
                   </div> <!-- End container -->
                
           <script>
+              // Get the array for the full version PDF 
+             let fullPDFQuestions = new Question();
+             let fullProfile1 = fullPDFQuestions.fullPDFdata(profile.questions,labelsarray);
+             let fullProfile2 = fullPDFQuestions.fullPDFdata(profile2.questions,labelsarray);
+             let fullProfile3 = fullPDFQuestions.fullPDFdata(profile3.questions,labelsarray);
             document.getElementById('manual-sub').addEventListener('click', function(){
             
             switch(sessionStorage.profileid){
@@ -137,11 +191,7 @@
             });
              
           switch(profile_id){
-                // If profile id is empty then create a intro tekst
-                case undefined:
-                document.getElementById("intro-message").innerHTML = "Smelltu ‡ viÝeigandi hlekk til aÝ byrja";
-                          break;
-                        // Load the questions of the 1. profile
+                
             case '1':
                 document.getElementById('profilename').innerHTML = profile.get_profile_name();
                 break;
@@ -178,8 +228,8 @@
                 
                  score_field[i].addEventListener('keydown',input_control.CheckNumberManual);
                  score_field[i].addEventListener('keyup',input_control.CheckNumberManual);
-                  score_field[i].addEventListener('focus', input_control.emptyFieldOnFocus);
-                  score_field[i].addEventListener('focus', input_control.SetSelected);
+                 score_field[i].addEventListener('focus', input_control.emptyFieldOnFocus);
+                 score_field[i].addEventListener('focus', input_control.SetSelected);
                  
                  if(!isIE11){
                     //Use the function if the browser is not IE11
@@ -204,28 +254,24 @@
                event_control.clickableLabels(navigationObj);
               
                 
-        var ctx = document.getElementById('myChart').getContext('2d');
+              var ctx = document.getElementById('myChart').getContext('2d');
               let PDF = new PrintToPdf(storedResults,storedResults2,storedResults3,labelsarray);
-           //event_control.clickableLabels();
-           document.getElementById('download-pdf').addEventListener("click", PDF.downloadResultsOnly);
-          
-            
-            
-          </script>
-                 
-          <script>
+            //event_control.clickableLabels();
+              document.getElementById('download-pdf').addEventListener("click", PDF.downloadResultsOnly);
+              document.getElementById('download-full-pdf').addEventListener("click", PDF.downloadFullPDF);
+             
 
-        var chart = new Chart(ctx, {
-    // The type of chart we want to create
-            type: 'radar',
+            var chart = new Chart(ctx, {
+            // The type of chart we want to create
+             type: 'radar',
 
-    // The data for our dataset
+             // The data for our dataset
    				
-            data: {
+             data: {
                 labels: labelsarray,
                 datasets: [{
                 label:profile.get_profile_name() ,
-               backgroundColor: 'rgba(255,255, 255,0.0)',
+                backgroundColor: 'rgba(255,255, 255,0.0)',
                 borderColor: '#333',
                 data: storedResults,
                 borderWidth: 10
@@ -252,18 +298,18 @@
         ],   
     },
         // Configuration options go here
-        options: {
+            options: {
                 scale: {
                 ticks: {
-        beginAtZero: true,
-        max: 5,
+                    beginAtZero: true,
+                    max: 5,
             
         },
-        pointLabels: {
+            pointLabels: {
                 fontSize: 13,
   },
     },
-        maintainAspectRatio: false,
+            maintainAspectRatio: false,
                  
      }
 });  
@@ -272,35 +318,18 @@
           
            <script>
         
-           document.getElementById('download-pdf').addEventListener("click", PDF.downloadPDF);
+           document.getElementById('download-pdf').addEventListener("click", PDF.downloadPDF);           
+
             
            </script>
                 </div>
             </div>
 
         
-     <footer>
-       
-                    <div class = " container logos">
-                         <hr/> 
-                       <!-- <div class="row">
-                           
-                          <div class = "col-sm-3"></div>
-                          
-                            <div class = " bottom-margin col-sm-2 mb-5"><img class = "img-responsive" src = "logoer/Erasmus-250x59.png" width = "220"  /> </div>
-                           
+     <footer id = 'footer'>  </footer>
+             
+   <!--<script> document.getElementById('footer').innerHTML = viewHandler.displayFooter();</script>-->
 
-                            <div class = " bottom-margin col-sm-3 mb-5"><p>Udarbejdet af Moeve og UU DANMARK</p> <a rel="license" href="https://creativecommons.org/licenses/by-nc-sa/4.0/"><img alt="Creative Commons License" style="border-width:0" src="https://i.creativecommons.org/l/by-nc-sa/4.0/80x15.png" /></a><br />This work is licensed under a <a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/4.0/">Creative Commons Attribution-NonCommercial-ShareAlike 4.0 International License</a>. </div>
-
-                          
-                            <div class = " bottom-margin col-sm-1 mb-5"><img class = "img-responsive" src = "logoer/YIT-fin-clean-2.png" width = "240"  /> </div>
-                           <div class = "col-sm-3"></div>
-                        </div> -->
-                        
-                    </div>
-                    
-                    
-                 </footer>
 <script type="text/javascript" src="pdfmake-master/build/pdfmake.min.js"></script>
 <script type="text/javascript" src="pdfmake-master/build/vfs_fonts.js"></script>
         </body>

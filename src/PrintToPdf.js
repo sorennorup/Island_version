@@ -35,7 +35,7 @@ PrintToPdf = function(results1,results2,results3,labelarr){
 		},
 		{
 			image:canvasImg,
-	        width: 450
+	        width: 400
 		}
 	
 	],
@@ -78,7 +78,7 @@ PrintToPdf = function(results1,results2,results3,labelarr){
 		},
 		{
 			image:canvasImg,
-	        width: 450
+	        width: 400
 		},
 		{text: 'Þitt mat (ráðþegi)', style: 'header'},	
 		

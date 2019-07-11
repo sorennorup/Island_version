@@ -95,5 +95,7 @@ questionArray5 = [];
  
     }
   
-  
- 
+ let taxo = ['Á ekki við ','Mjög ósammála','Frekar ósammála','Hlutlaus','Frekar sammála']; 
+ let intromessage = "Smelltu á viðeigandi hlekk til að byrja ";
+ let downloadBtn1 = "Hlaða niður PDF skjali";
+ let downloadBtn2 = "Hlaða niður PDF skjali(full version) "

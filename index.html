@@ -2,24 +2,26 @@
 <html>  
     
     <head>
-         <meta charset="Mac-ioceland">
-         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+        <meta charset="Mac-iceland">
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
         <script src = "src/jquery.js"></script>
-       <script src =" bootstrap/js/bootstrap.min.js"></script>
-         <link rel="stylesheet" type="text/css" href="bootstrap/css/bootstrap.min.css">
+        <script src =" bootstrap/js/bootstrap.min.js"></script>
+        <link rel="stylesheet" type="text/css" href="bootstrap/css/bootstrap.min.css">
         <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.7.3/Chart.js"></script>
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/bluebird/3.3.5/bluebird.min.js"></script>
+        <script src="jsPDF-master/src/Chart.js"></script>
+        <script src = "src/wysiwyg.js"></script>	
         <script src = "src/loadCounter.js"></script>
+        <script src = "src/View.js"></script>
         <script src = "src/Reset.js"></script>
         <script src = "src/InputControl.js"></script>
         <script src = "src/Question.js"></script>
         <script src = "src/Profile.js"></script>
         <script src = "src/PrintToPdf.js"></script>
         <script src = "src/Result.js"></script>
+        <script src = "src/Comment.js"></script>
         <script src = "src/QuestionsDataModel.js"></script>
         <script src = "src/Label.js"></script>
         <script src = "src/EventsControl.js"></script>
-       
         <link rel="stylesheet" type="text/css" href="style.css">
     
     </head>
@@ -28,60 +30,98 @@
             
             <div class = "container">
                 <div class = "row">
+                    
                     <div class = "col-lg-7">
-                <h1>Mat á starfsþroska  </h1>
+                     
+                <h1>Erhvervsparathed </h1>
+                   
                <p id = "intro-message"></p>
+                 <div class = 'profile-buttons'>
                 <button id = 'profileid_1' class = "btn profile-menu-item" value = 1>Þitt mat (ráðþegi) </button>
                 <button id = 'profileid_2' class = "btn profile-menu-item" value = 2>Markmið</button>
                 <button id = 'profileid_3' class = "btn profile-menu-item" value = 3>Mat ráðgjafa </button>
-
-                
-                <div class = "tax-container">
-               
-
-                    <table>
-                        <tr>
-                            <td>Á ekki við  </td>
-                            <td> 0 </td>
-                        </tr>
-                         <tr>
-                            <td>Mjög ósammála </td>
-                            <td> 1</td>
-                        </tr>
-                          <tr>
-                            <td>Frekar ósammála </td>
-                            <td> 2 </td>
-                        </tr>
-                           <tr>
-                            <td>Hlutlaus </td>
-                            <td> 3 </td>
-                        </tr>
-                            <tr>
-                            <td>Frekar sammála </td>
-                            <td> 4 </td>
-                        </tr>
-                           
-                           <tr>
-                            <td>Mjög sammála </td>
-                            <td> 5</td>
-                        </tr>
-                    </table>
+                </div>
+                 
+                <div class = "row">
+                <div id = 'tax-view' class = "tax-container col-lg-5"></div>
                     
-                   
-                </div>       
+                <script>
+                  // Create the viewobject
+                let viewHandler = new View();
+                document.getElementById('tax-view').innerHTML = viewHandler.showTaxamoniView(taxo);</script>
+                 
+               <div class = "container" id = "info-box"></div>
+               <script>
+                document.getElementById('info-box').innerHTML = newView.displayInfoMessage();
+               </script>
+                
+                <div class = " col-lg-6 card comment-card">
+                     
+                    <a id = "accordion-link" class="accordion-header" data-toggle="collapse" href="#collapseCommentBox"aria-expanded="false" aria-controls="collapseCommentBox">
+                   Comments<span id = "collapse-sign" style = "float:right;margin-top:-10px; font-size:30px;">+</span>
+                    </a>
+                    
+                    
+                     <div class="collapse " id="collapseCommentBox">
+                    
+                    <div class = "card-body rounded" id = "comment">
+                      
+                    </div>
+                    <br>
+              
+                    </div>  
+                </div>
+                <script>
+                    $("#accordion-link").click(function(){
+                        if(!$("#collapseCommentBox").hasClass('show')){
+                            document.getElementById('collapse-sign').innerHTML = "-  ";
+                        }
+                        else {
+                             document.getElementById('collapse-sign').innerHTML = "+";
+                        }
+                        
+                        
+                        });
+                    
+                </script>
+               
+        <!----------***** Commentbox stuff *****------------->
+                <!--  modalboxview here -->
+                <div id = "modal-box"></div>
+                 <!-- End modalboxview here -->
+    <script>
+        
+           
+            // Insert the modalboxview inside the div
+            document.getElementById('modal-box').innerHTML = viewHandler.modalBoxView();
+            // Display the previus text in the modalview
+            viewHandler.displayTextInView();
+            // Display the comment in the commentbox
+            newComment.displayComment();
+            // After submitting new comments and closing the popupwindow the commentbox appears the next pageload
+            viewHandler.showCommentBoxAfterSubmit();
+            // Click event to store the new comment
+            document.getElementById('submitComment').addEventListener('click',function(){     
+            
+            newComment.storeComment();
+            
+            
+            });
+    </script>
+            </div>    
+        
+         <!----------***** End Commentbox stuff *****------------->
+          
              <!---   Start the form    --> 
         <form  name = "my-form" id = "question-form" style = "" action= "index.html">
-           
+          
             <table width = 100% class = "table-hover" id = "question"> <!-- Start table -->
            
-            <tr>
-                <th  style = "font-size:30px; color:grey;" align = "left" id = "labelsView"> </th>
-                
-               <!--<td width = "10%"><span id = "counter"></span><span id =  "totalcount"></span> </td>-->
-               
-            </tr>
+             <tr>
+                <th  style = "font-size:30px; color:grey;" align = "left" id = "labelsView">  </th>
+             </tr>
      
-    <script>
+        <script>
             // Init dataobjects
              var data = new Result(id,1);
              var data2 = new Result(id,1);
@@ -92,17 +132,18 @@
              event_control.adClickedToButton();
              event_control.addListenerToProfileLink();
                          
-            // Create the profile for the questions// Profile array is containing all the questions of the profile
-             var profile2 = new Profile(profile_array[1],'Markmið', 2, labelsarray);
-             var profile = new Profile(profile_array[0],'Þitt mat (ráðþegi) ',1,labelsarray);
-             var profile3 = new Profile(profile_array[2],'Mat ráðgjafa ',3,labelsarray);
+             // Create the profile for the questions// Profile array is containing all the questions of the profile
+             let profile2 = new Profile(profile_array[1],'Markmið', 2, labelsarray);
+             let profile = new Profile(profile_array[0],'Þitt mat (ráðþegi) ',1,labelsarray);
+             let profile3 = new Profile(profile_array[2],'Mat ráðgjafa ',3,labelsarray);
              
-              let fullPDFQuestions = new Question();
+               // Get the array for the full version PDF 
+             let fullPDFQuestions = new Question();
              let fullProfile1 = fullPDFQuestions.fullPDFdata(profile.questions,labelsarray);
              let fullProfile2 = fullPDFQuestions.fullPDFdata(profile2.questions,labelsarray);
              let fullProfile3 = fullPDFQuestions.fullPDFdata(profile3.questions,labelsarray);
              console.log(fullProfile1);
-             
+              
              // get the stored result for the Chart
              var storedResults = profile.getResults(); 
              var storedResults2 = profile2.getResults();
@@ -110,11 +151,11 @@
              var profile_id = sessionStorage.profileid;
                
              /************Handle the questions************/
-             
+            
              switch(profile_id){
                 // If profile id is empty then create a intro tekst
                 case undefined:
-                document.getElementById("intro-message").innerHTML = "Smelltu á viðeigandi hlekk til að byrja ";
+                document.getElementById("intro-message").innerHTML = viewHandler.displayIntroMessage();
                           break;
                         // Load the questions of the 1. profile
                 case '1': profile.getQuestions();
@@ -139,8 +180,8 @@
             
              for(var i = 0; i< score_field.length; i++){
                 
-                 score_field[i].addEventListener('keydown',input_control.CheckNumber1);
-                 score_field[i].addEventListener('keyup',input_control.CheckNumber1);
+                  score_field[i].addEventListener('keydown',input_control.CheckNumber1);
+                  score_field[i].addEventListener('keyup',input_control.CheckNumber1);
                   score_field[i].addEventListener('focus', input_control.emptyFieldOnFocus);
                   score_field[i].addEventListener('focus', input_control.SetSelected);
                  
@@ -162,20 +203,21 @@
                  
              }
             /*****End Add eventlisteners to the inputfield*****/
-    </script>
+        
+     </script>
                 
             </table>   <!-- End the table -->
 
-        <input id = "sub" class = "  btn-success" id = 'next-subject' style = "float:right;" type = "submit" value = "Næsta ->"/>
+      <input id = "sub" class = "  btn-success" id = 'next-subject' style = "float:right;" type = "submit" value = "Næsta ->"/>
 
          </form> <!-- End of the form -->
     </div>
                     <div class = "col-lg-5">
-         
-         <table id = 'results-view-for-pdf'></table>
+        
+        
            
            <script>
-             
+             // *********** Result data interaction ************* //
            document.getElementById('sub').addEventListener('click',function(){
              showid = "#"+id;
             $('#result-container').fadeIn();
@@ -223,30 +265,42 @@
               }
 
             });
+           // *********** Result data interaction ************* //
+           
            
             </script>
+           
              <div id = "for-print">
                 <div id = "result-container">
                    
-                  <div id = "profilename"></div>
-                 <div class="panel">
-                    <div class="panel-heading">Niðurstöður</div>
-                    <div class="panel-body"> <table  id = "resultView"> </table></div>
-                </div>
-             
-                   <button class = "btn btn-secondary" id = 'download-pdf'>Hlaða niður PDF skjali</button> 
-                                      <button class = "btn btn-secondary" id = 'download-full-pdf'>Hlaða niður PDF skjali(full version) </button> 
                    
-
+                  <div id = "profilename"></div>
+                 <div class= "table-panel panel ">
+                    <div class="panel-heading"><br/></div>
+                    <div class="panel-body">
+                        
+                        <table  id = "resultView"> </table>
+                        
+                    </div>
+                </div>
+                  <div id = "resultMobileView"></div>
+                   
+                     
                  <div id = chartContainer>
                         <hr/> 
                  <canvas id = "myChart"> </canvas>
                   
               </div>
+                 <button class = "btn btn-secondary" id = 'download-pdf'>Hlaða niður PDF skjali</button> 
+                 <button class = "btn btn-secondary" id = 'download-full-pdf'>Hlaða niður PDF skjali(full version) </button> 
+
                  </div>
-                </div> <!-- End col
+                </div> <!-- End col -->
+                 
              </div> <!-- End row -->
+            
                   </div> <!-- End container -->
+               
           <script>
             
             var labels = new Label();
@@ -254,14 +308,18 @@
             var labelsarr = labels.setLabels(view);
 
           
-           document.getElementById('resultView').innerHTML = labelsarr+data.setResultViewIds();  
+           document.getElementById('resultView').innerHTML = labelsarr+data.setResultViewIds();
+           
                
                switch(sessionStorage.profileid){
-                case '1': data.setResultView();
+                case '1': data2.setResultView();
+                          data2.setMobileResultView(labelsarray);
                           break;
                 case '2': data3.setResultView();
+                          data3.setMobileResultView(labelsarray);
                           break;
                 case '3': data5.setResultView();
+                          data5.setMobileResultView(labelsarray); 
                }
                
             
@@ -270,7 +328,7 @@
               
                 
         var ctx = document.getElementById('myChart').getContext('2d');
-             let PDF = new PrintToPdf(storedResults,storedResults2,storedResults3,labelsarray);
+              let PDF = new PrintToPdf(storedResults,storedResults2,storedResults3,labelsarray);
            //event_control.clickableLabels();
            document.getElementById('download-pdf').addEventListener("click", PDF.downloadResultsOnly);
            document.getElementById('download-full-pdf').addEventListener("click", PDF.downloadFullPDF);
@@ -279,6 +337,10 @@
           </script>
                  
           <script>
+            let sizeOfLableFont = 13;
+            if(screen.width < 401){
+		      sizeOfLableFont = 10;
+	      }
 
         var chart = new Chart(ctx, {
     // The type of chart we want to create
@@ -302,6 +364,7 @@
                 borderColor: '#333',
                 data: storedResults2,
                 borderWidth: 2
+               
 
            },
            { 
@@ -309,7 +372,8 @@
                 backgroundColor: 'rgba(255, 255, 255,0.0)',
                 borderColor: '#000',
                 data: storedResults3,
-                borderDash: [10,5]
+                
+                 borderDash: [10,5]
 
            } 
         ],   
@@ -323,7 +387,7 @@
             
         },
         pointLabels: {
-                fontSize: 13,
+                fontSize: sizeOfLableFont,
   },
     },
         maintainAspectRatio: false,
@@ -334,16 +398,22 @@
             </script>
           
            <script>
-            //document.getElementById('results-view-for-pdf').innerHTML = PDF.resultsForPDF(storedResults,storedResults2,storedResults3,labelsarr) ; 
-           //event_control.clickableLabels();
-          // document.getElementById('download-pdf').addEventListener("click", PDF.downloadPDF);
+        
+           document.getElementById('download-pdf').addEventListener("click", PDF.downloadPDF);
             
            </script>
-   <!--<script src="https://unpkg.com/jspdf@latest/dist/jspdf.min.js"></script>-->
-<!--<script type="text/javascript" src="jsPDF-master/dist/jspdf.debug.js"></script>-->
+                </div>
+            </div>
+
+        
+     <footer id = "footer">
+       
+             <!--<script> document.getElementById('footer').innerHTML = viewHandler.displayFooter();</script>       -->
+                    
+                    
+                 </footer>
+
 <script type="text/javascript" src="pdfmake-master/build/pdfmake.min.js"></script>
 <script type="text/javascript" src="pdfmake-master/build/vfs_fonts.js"></script>
-<script src="https://rawgit.com/someatoms/jsPDF-AutoTable/master/dist/jspdf.plugin.autotable.js"></script>
         </body>
- 
 </html>

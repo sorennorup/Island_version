@@ -1,18 +1,91 @@
+/***** Global **********/
+
 body{
     width: 100%;
-    font-family: calibri;
-    color:#333;
-    
+   
+    color:#333;    
 }
+
 a{
     color: #28a745;
 }
 a:hover{
     color: #d89c44;
 }
+.container{
+    float: left;
+    
+}
+/******End global********/
+
+#resultMobileView{
+    display: none;
+}
+
 .score{
     margin-top:10px;
 }
+
+/********** Buttons **********/
+#download-pdf{
+   margin-left: 10px;
+   float:right;
+   
+}
+#download-full-pdf{
+    float:right;
+}
+button, #sub {
+  margin-top:10px; padding:10px 20px; border-radius:0;border:none;
+}
+button {
+    cursor: pointer;
+}
+
+.btn {
+    background-color: #28a745;
+    color: #fff;
+      border:none;
+}
+.btn:hover{
+    background-color:#d89c44 !important;
+    color: #fff !important;
+}
+.next{
+    margin-top: 10px;
+    width:100px;   
+}
+#manual-sub{
+    float:right;
+    
+}
+.manualView {
+    background-color: #eeeeee;
+    padding:10px;
+}
+.clicked {
+    background-color: #d89c44;
+    color: #fff;
+}
+/********** End Buttons **********/
+input {
+    cursor: pointer;
+}
+
+
+.alert-success{
+    margin-top: 10px;
+    
+}
+#myChart{
+   margin-left: 20px;
+}
+.result-direct{
+    margin-top: 70px !important;
+}
+
+
+/************ Tables ******************/
 .tax-container td{
     padding: 0px;
     
@@ -21,75 +94,19 @@ a:hover{
 .tax-container{
    
     width: 200px;
-    
+       
 }
 .tax-container table tr{
     height:3px;
-}
-#download-pdf{
-   margin-right: 10px;
-   background-color:#28a745;
-    border:none;
-    
-
-}
-#download-pdf:hover{
-    
-   background-color: #d89c44;
-}
-#download-full-pdf{
-     background-color: #28a745;
-     border:none;
-    
-}
-#download-full-pdf:hover{
-    background-color: #d89c44;
-}
-button, #sub {
-  margin-top:10px; padding:10px 20px; border-radius:0;border:none;
-}
-button {
-    cursor: pointer;
-}
-input {
-    cursor: pointer;
-}
-.btn{
-    cursor: pointer;
-    color: #fff;
-}
-.btn:hover{
-    background-color:#d89c44 !important;
-    color: #fff !important;
-}
-.profile-menu-item{
-    
-    color: #333;
-}
-.container{
-    float: left;
-    
-}
-
-.chartjs-render-monitor{
-   
-}
-#myChart{
-   margin-left: 20px;
-}
-
-.test{
-    font-size: 18px;
 }
 
 table {
     width:100%;
     border-collapse: collapse;
+    border-spacing:5px;
+    border-collapse: separate;
 }
-.clicked {
-    background-color: #d89c44;
-    color: #fff;
-}
+
 input { 
     text-align: center; 
 }
@@ -100,19 +117,6 @@ td {
    
 }
 
-.next-subject-btn{
-    background-color: #9ca368;
-    color: #fff;
-}
-#sub:hover{
-    background-color: #d89c44;
-    border:none;
-}
-#manual-sub{
-    float:right;
-    background-color:#28a745;
-    color: #fff;
-}
 #resultView td{
    padding: 0px;
 }
@@ -134,9 +138,8 @@ td {
 #question{
    height: 100px;
 }
-.row1{
-    font-weight: 200;
-}
+/*********** End tables ************/
+
 
 .selected{
     padding: 5px;
@@ -145,54 +148,182 @@ td {
 }
 
 #labelsView{
-
+    
     padding:5px;
 }
 #chartContainer{
     
-    
     height: 500px;
     width: 500px;
 }
-#resultView{
-    
-}
+
 #result-container{
    margin-top:80px;
    
 }
 
-table{border-spacing:5px; border-collapse: separate;}
+
 .label{
     padding-right:5px;
-    font-size:14px;
+    font-size:15px;
     
     color: grey;
     
 }
-#results-view-for-pdf{
-    display:none;
-}
-#download-pdf{
-    margin-left: 10px;
+ /********* Commentbox ********/
+#comment{
     
-
+    font-size: 15px;
+    font-style: italic;
+    background-color: #f1f0f0;
+    position:absolute;
+    width: 300px;
+    z-index: 999;
+       
 }
-#profilename{
-    color: lightgrey;
+.comment-card{
+    position:absolute;
+    right: 20px;
+    top:75px;
+    width: 200px;
+       
+}
+
+.accordion-header{
+    margin-top: 5px;
     
+    color:#333;   
 }
-.next{
-    margin-top: 10px;
-    width:100px;
-   
+.accordion-header:hover{
+    text-decoration: none;
+}
+.edit-link{
+    float:right;
+    font-size: 11px;
+}
+/********* End Commenbox*******/
+
+#result-container{
+    margin-top:20px;
 }
 
+.white h4{
+    color: #fff;
+}
+ 
+/** Set the scorefield size **/
 #score{
     width:100px;
 }
+/*** Logo footer ***/
 .logos{
     max-width: 1400px !important;
     margin-top: 20px;
        
 }
+ /*************** Mobile Version **********************/
+@media only screen and (max-width: 400px) {
+    .label-header{
+        font-size: large;
+    }
+    .right{
+        float:right;
+        margin-right: 50px;
+    }
+    .comment-card{
+        top:50px;
+        left: 15px;
+        width: 92%;
+        margin-bottom: 20px;
+    }
+    
+   
+   .table-panel{
+    display: none;
+   }
+   /***** Buttons *******/
+   .profile-buttons {
+        margin-top: 50px;
+    }
+    
+   .btn{
+    width: 100%;
+    
+   }
+   .profile-buttons .btn{
+        width: 30%;
+    }
+   #sub{
+    width: 100%;
+   }
+   #download-pdf{
+    margin-left: 0px;
+   }
+   /******** End Buttons*******/
+   
+    /******* Chartcontainer ******/
+     #myChart{
+        font-size: 8px;
+    }
+    
+    #chartContainer{
+    width:370px;
+    margin-left: -30px;   
+   }
+      
+    .panel-heading{
+        font-weight: 600;
+        font-size: large;
+     }
+     /*******End chartcontainer *****/
+     
+     
+     /***** The maual resultinput table***/
+      #resultMobileView{
+        display:block;
+        
+    }
+    .manualView table, .manualView th, .manualView tbody, .manualView  td, .manualView tr{ 
+		display: block; 
+	}
+
+	/* Hide table headers (but not display: none;, for accessibility) */
+	.manualView th { 
+		position: absolute;
+		top: -9999px;
+		left: -9999px;
+	}
+	
+	.manualView td { 
+		/* Behave  like a "row" */
+		margin-bottom: 10px;
+        margin-top: 10px;
+		float:left;
+        margin-right: 10px;
+        width: 130px;
+	}
+	#score{
+        width: 140px;
+        
+    }
+	.manualView  td:before { 
+		/* Now like a table header */
+		
+        text-align: center;
+		
+		
+		white-space: nowrap;
+        
+	}
+    
+     .manualView td:nth-of-type(1):before { content: "Sociale spilleregler"; }
+	 .manualView   td:nth-of-type(2):before { content: "Målsætning"; }
+	.manualView   td:nth-of-type(3):before { content: "Motivation"; }
+	.manualView   td:nth-of-type(4):before { content: "Fleksibilitet"; }
+	.manualView  td:nth-of-type(5):before { content: "Robusthed"; }
+	.manualView  td:nth-of-type(6):before { content: "Faglighed"; }
+	 /***** End maual resultinput table ******/
+}
+	/*********************End mobile version ***********************/
+	
+

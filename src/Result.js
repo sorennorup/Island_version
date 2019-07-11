@@ -5,7 +5,8 @@ Result = function(id,profile_id){
     // Setting data in question, setting data 5 different places
     this.setData = function(){
          
-        var results = document.forms[0];
+        var results = document.forms[1];
+        
        
         document.getElementById('result').innerHTML = " ";
 
@@ -13,7 +14,6 @@ Result = function(id,profile_id){
         
         var all_res = this.resultarray(results);
         
-       
         var res = this.calculateAverage(results);
         
         if(res.toString().length > 3){
@@ -54,8 +54,7 @@ Result = function(id,profile_id){
      // store the manual data and put it into the result table
     this.setManualData = function() {
         
-         
-         var results = document.forms[1];
+         var results = document.forms[2];
          var resarray = this.resultarray(results);
          
        for(var i = 0; i < 6; i++){         
@@ -83,6 +82,7 @@ Result = function(id,profile_id){
                 resstr += '</tr>';
                 return resstr;
             };
+            
     
 
            // set the result into the result divs
@@ -94,6 +94,22 @@ Result = function(id,profile_id){
                     document.getElementById(this.res_array[i]).innerHTML = sessionStorage.getItem(result);
                 }
                 
+        };
+        this.setMobileResultView = function(labelArr){
+            let html = "<h3>Resultater</h3>";
+            html += ' <ul class="list-group">';
+             for(var i = 0; i < this.res_array.length; i++){
+                    var keyNum = i+1;
+                     var result = 'value'+keyNum+'id'+this.profile_id;
+                     html += '   <li class = "list-group-item"><span class = "label-header">'+
+                                labelArr[i]+'</span>'+
+                                '<span class = "right">'+sessionStorage.getItem(result)+'</span></li>';
+                    
+                   
+                }
+                html += '</ul>';
+                 document.getElementById('resultMobileView').innerHTML = html;
+            
         };
           // insert the result directly, without the questions
     this.insertResultDirect = function() {
