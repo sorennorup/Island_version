@@ -13,7 +13,7 @@ a:hover{
     color: #d89c44;
 }
 .container{
-    float: left;
+    max-width: 1300px;
     
 }
 /******End global********/

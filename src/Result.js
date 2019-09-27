@@ -95,7 +95,7 @@ Result = function(id,profile_id){
                 }
                 
         };
-        this.setMobileResultView = function(labelArr){
+    this.setMobileResultView = function(labelArr){
             let html = "<h3>Resultater</h3>";
             html += ' <ul class="list-group">';
              for(var i = 0; i < this.res_array.length; i++){
@@ -114,7 +114,6 @@ Result = function(id,profile_id){
           // insert the result directly, without the questions
     this.insertResultDirect = function() {
           
-            
                 for(var i = 0; i < this.res_array.length; i++){
                     var keyNum = i+1;
                      var result = 'value'+keyNum+'id'+this.profile_id;

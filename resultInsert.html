@@ -62,19 +62,16 @@
                  <!-- End modalboxview here -->
           <script>
             
-                    $("#accordion-link").click(function(){
-                        if(!$("#collapseCommentBox").hasClass('show')){
-                            document.getElementById('collapse-sign').innerHTML = "-  ";
-                        }
-                        else {
+            $("#accordion-link").click(function(){
+                if(!$("#collapseCommentBox").hasClass('show')){
+                        document.getElementById('collapse-sign').innerHTML = "-  ";
+                }
+                else {
                              document.getElementById('collapse-sign').innerHTML = "+";
-                        }
-                        
-                        
-                        });
+                }
+                                    
+            });
                     
-               
-        
             // Create the viewobject
             let viewHandler = new View();
             // Insert the modalboxview inside the div
