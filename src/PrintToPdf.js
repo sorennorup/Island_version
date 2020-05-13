@@ -1,86 +1,138 @@
 PrintToPdf = function(results1,results2,results3,labelarr){
+	this.theFontSize = 13;
 	
-  this.downloadResultsOnly = function(){
-	
-	var canvas = document.querySelector( '#myChart' );
-		
-		//creates image
-		var canvasImg = canvas.toDataURL( "image/png", 1.0 );
-		pdfMake.setFonts(fonts);
-		
-	
-		var dd = {
-		
-	content: [
-		
-		{text: 'Niðurstöður', style: 'header'},
-		
-		{
-			style: 'tableExample',
-			table: {
-				headerRows: 1,
-				body: [labelarr,
-						[{text: 'Þitt mat (ráðþegi)',colSpan: 6, alignment: 'left'}],
-						results1,
-						[{text: 'Markmið', colSpan: 6, alignment: 'left'}],
-
-						results2,
-						[{text: 'Mat ráðgjafa',  colSpan: 6, alignment: 'left'}],
-
-						results3
-					  ]
-			},
-				
-			layout: 'headerLineOnly'
-		},
-		{
-			image:canvasImg,
-	        width: 400
-		}
-	
-	],
-		};
-	pdfMake.createPdf(dd).download();
-  };
-	
-	
-	this.downloadFullPDF = function() {
+	this.downloadResultsOnly = function(){
 		var canvas = document.querySelector( '#myChart' );
 		
+
 		//creates image
 		var canvasImg = canvas.toDataURL( "image/png", 1.0 );
+		
 		pdfMake.setFonts(fonts);
-		
-	
 		var dd = {
-		
-	content: [
-		
-		{text: 'Resultater', style: 'header'},
-		
-		{
+			content: [
+				{ text: 'ERHVERVSPARATHED', style: 'header' },
+				{ text: '-en selvevaluering i dialog', style: 'header2' },
+			{
 			style: 'tableExample',
 			table: {
 				headerRows: 1,
 				body: [labelarr,
-						[{text: 'Þitt mat (ráðþegi)',colSpan: 6, alignment: 'left'}],
-						results1,
-						[{text: 'Markmið', colSpan: 6, alignment: 'left'}],
-
-						results2,
-						[{text: 'Mat ráðgjafa',  colSpan: 6, alignment: 'left'}],
-
-						results3
-					  ]
+					[{text: 'UNG',colSpan: 6, alignment: 'left',style: 'profile1Text'}],
+					results1,
+					[{text: 'MÃ…L', colSpan: 6, alignment: 'left',style: 'profile2Text'}],
+					results2,
+					[{text: 'PROFESSIONEL',  colSpan: 6, alignment: 'left',style: 'profile3Text'}],
+					results3
+				]
 			},
-				
+		
+		layout: 'headerLineOnly'
+		},
+		{
+		image:canvasImg,
+		width: 700,
+		margin: [-90, 0]
+		},
+		
+		
+		{text: 'BEMÃ†RKNINGER',style: 'header2'},
+		
+		{
+		table: {	
+			body:[	
+					[{text: 'UNG',alignment: 'left',style: 'profile1Text'}],
+					[createCommentArray(commentsArrProf1)],
+					[{text: 'MÃ…L', alignment: 'left',style: 'profile2Text'}],
+					[createCommentArray(commentsArrProf2)],
+					[{text: 'professionel', alignment: 'left',style: 'profile3Text'}],
+					[createCommentArray(commentsArrProf3)]
+			]
+		},
+		
+		layout: 'noBorders',
+		style: 'commenttext'
+	}
+	],
+
+		styles: {
+			header: {
+				fontSize: 25,
+				alignment: 'justify'
+			},
+			header2: {
+				fontSize: 18,
+				lineHeight: 2.0
+			},
+			commenttext: {
+				fontSize: 10,
+				lineHeight:1.5,
+			},
+			profile1Text: {
+				fontSize: 13,
+				color: '#609fc2'
+			},
+			profile2Text: {
+				fontSize: 13,
+				color: '#dfab61'
+			},
+			profile3Text: {
+				fontSize: 13,
+				color: '#001b4d',
+			}
+
+		}
+	};
+		pdfMake.createPdf(dd).download();
+	};
+
+	createCommentArray = function (commentArr) {
+		let comments = [];
+		let labels = ['MÃ…LSÃ†TNING','MOTIVATION','ROBUSTHED','FLEKSIBILITET','SOCIALE NORMER','MIN FAGLIGHED'];
+		for(let i = 0; i < labelarr.length; i++) {
+			let props = [labels[i]+'  '+commentArr[i]];
+			comments.push(props);
+		}
+		return comments;
+	}
+	
+	this.downloadFullPDF = function() {
+		
+		var canvas = document.querySelector( '#myChart' );
+		//creates image
+		var canvasImg = canvas.toDataURL( "image/png", 1.0 );
+		pdfMake.setFonts(fonts);
+		var dd = {	
+			content: [
+				{
+					text: 'Erhvervsparathed', 
+					style: 'header'
+				},
+		
+			{
+			style: 'tableExample',
+			table: {
+				headerRows: 1,
+				body: [labelarr,
+					[{text: 'Ung',colSpan: 6, alignment: 'left',style: 'profile1Text'}],
+					results1,
+					[{text: 'MÃ¥l', colSpan: 6, alignment: 'left',style: 'profile2Text'}],
+					results2,
+					[{text: 'Professionel',  colSpan: 6, alignment: 'left',style: 'profile3Text'}],
+					results3
+				]
+			},
 			layout: 'headerLineOnly'
 		},
 		{
 			image:canvasImg,
-	        width: 400
+	        width: 700,
+			margin: [-90, 0]
 		},
-		{text: 'Þitt mat (ráðþegi)', style: 'header'},	
+		
+		 
+		{text: 'Unge', style: 'header2'},
+			
 		
 		{
 			style: 'tableExample',
@@ -91,12 +143,13 @@ PrintToPdf = function(results1,results2,results3,labelarr){
 				
 				fullProfile1,
 				
+				
 			},
 			
 			layout: 'headerLineOnly'
 		},
 		
-		{text: 'Markmið', style: 'header'},	
+		{text: 'MÃ¥l', style: 'header2'},	
 		
 		{
 			style: 'tableExample',
@@ -110,7 +163,7 @@ PrintToPdf = function(results1,results2,results3,labelarr){
 			
 			layout: 'headerLineOnly'
 		},
-		{text: 'Mat ráðgjafa', style: 'header'},	
+		{text: 'Vejleder', style: 'header2'},	
 		
 		{
 			style: 'tableExample',
@@ -130,8 +183,26 @@ PrintToPdf = function(results1,results2,results3,labelarr){
 		header: {
 			fontSize: 25,
 			bold: true,
-			alignment: 'justify'
+			alignment: 'justify',
+			marginBottom: 10
+		},
+		header2: {
+			fontSize: 20,
+			marginBottom: 5
+		},
+		commenttext: {
+			fontSize: 10	
+		},
+		profile1Text: {
+			color: '#609fc2'
+		},
+		profile2Text: {
+			color: '#dfab61'
+		},
+		profile3Text: {
+			color: '#001b4d'
 		}
+
 	}
 	
 };
@@ -139,8 +210,10 @@ PrintToPdf = function(results1,results2,results3,labelarr){
 		pdfMake.createPdf(dd).download();
     
 	
+	
 	};
             
+
 	
 		
 };

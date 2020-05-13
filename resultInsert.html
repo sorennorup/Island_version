@@ -4,12 +4,13 @@
     <head>
         <meta charset="Mac-iceland">
          <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-        <script src = "src/jquery.js"></script>
+         <script src = "src/jquery.js"></script>
          <script src =" bootstrap/js/bootstrap.min.js"></script>
          <link rel="stylesheet" type="text/css" href="bootstrap/css/bootstrap.min.css">
         <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.7.3/Chart.js"></script>
         <!--<script src="https://cdnjs.cloudflare.com/ajax/libs/bluebird/3.3.5/bluebird.min.js"></script>-->
-        <script src = "src/wysiwyg.js"></script>	
+        <script src = "src/wysiwyg.js"></script>
+        <script src = "src/helpers.js"></script>		
         <script src = "src/loadCounter.js"></script>
         <script src = "src/View.js"></script>
         <script src = "src/Reset.js"></script>
@@ -23,83 +24,78 @@
         <script src = "src/Label.js"></script>
         <script src = "src/EventsControl.js"></script>
         <link rel="stylesheet" type="text/css" href="style.css">
-    
+        <link href="https://fonts.googleapis.com/css?family=Barlow+Semi+Condensed:300,400,400i,500,600,700" rel="stylesheet">
+
     </head>
-    
+    <script>
+
+    </script>
         <body id = "print-body">
             
           <div class = "container">
             <div class = "row">
                     
-               <div class = "col-lg-7">
-                     
-               <h1>Mat á starfsþroska  </h1>
-                   
-               <p id = "intro-message"></p>
-                <div class = 'profile-buttons'>
-                <button id = 'profileid_1' class = "btn profile-menu-item" value = 1>Þitt mat (ráðþegi) </button>
-                <button id = 'profileid_2' class = "btn profile-menu-item" value = 2>Markmið</button>
-                <button id = 'profileid_3' class = "btn profile-menu-item" value = 3>Mat ráðgjafa </button>
-                </div>
+               <div class = "col-lg-12">
 
-               <div class = " col-lg-6 card comment-card">
-                     
-                    <a id = "accordion-link" class="accordion-header" data-toggle="collapse"
-                    href="#collapseCommentBox"aria-expanded="false" aria-controls="collapseCommentBox">
-                   Comments<span id = "collapse-sign" style = "float:right;margin-top:-10px; font-size:30px;width:50px;">+</span>
-                    </a>
-                     <div class="collapse " id="collapseCommentBox">
-                    
-                    <div class = "card-body rounded" id = "comment">
-                      
-                    </div>
-                    <br>
-                    </div>  
-                </div>
+                <div id = "title"></div>
+                <script>
+                    newView.setTitle();
+                </script>
+               <div id = "display-profile-btn"></div>
+	<script>
+			document.getElementById('display-profile-btn').innerHTML = newView.displayProfileButtons();
+    </script>
+    
+    <div id="accordion">
+        <div class="card accordion__card">
+          <a class="card-header" id="accordion__heading">
+            <h5 class="mb-0">
+              <div id = "collapse-id" class="" data-toggle="collapse" data-target="#collapseOne" aria-expanded="false" aria-controls="collapseOne">
+                OM METODEN
+              </div>
+            </h5>
+        </a>
+
+          <div id="collapseOne" class="collapse hide" aria-labelledby="accordion__heading" data-parent="#accordion">
+            <div id = 'accordion__body' class="card-body">
+                <p>Her kan du lave et aktuelt billede af din erhvervsparathed. N?r du har besvaret en r?kke sp?rgsm?l i 6 blokke, resulterer dine svar i et billede. Billedet minder om en radar eller et spindelv?v.</p>
+
+                <p>Erhvervsparathed er dine kompetencer og dine potentialer for at starte og holde fast i et job eller i praktik. Det g?lder ogs?, n?r du t?nker p? at starte p? en erhvervsuddannelse eller er igang med den.</p>
+
+                <p>Billedet g?lder kun dig selv og kun for den situation, som du befinder dig i lige nu. Du kan altid udvikle dig videre og ?ndre din situation. </p>
+
+                <p>Det tager ca. 20 minutter. Dine svar bliver ikke gemt, og de bliver ikke givet videre til andre. Men du kan udskrive billedet og svarene, hvis du vil.</p>
+
+                <span>For professionelle: L?s mere i <a style = "color: #5593c2" href = "TOOL-Erhvervsparathed2020-april.pdf" target = "_blank"> Guide for anvendelse.</a></span>
+            </div>
+          </div>
+        </div>
+    </div>	
+
                <!----------***** Commentbox stuff *****------------->
                 <!--  modalboxview here -->
                 <div id = "modal-box"></div>
                  <!-- End modalboxview here -->
           <script>
             
-            $("#accordion-link").click(function(){
-                if(!$("#collapseCommentBox").hasClass('show')){
-                        document.getElementById('collapse-sign').innerHTML = "-  ";
-                }
-                else {
-                             document.getElementById('collapse-sign').innerHTML = "+";
-                }
-                                    
-            });
-                    
+            $('#accordion').on('hidden.bs.collapse', removeBackground);
+			$('#accordion').on('shown.bs.collapse', addBackground);
+			$('#collapse-id').addClass('accordion__plussign');
+        
             // Create the viewobject
             let viewHandler = new View();
             // Insert the modalboxview inside the div
-            document.getElementById('modal-box').innerHTML = viewHandler.modalBoxView();
-            // Display the previus text in the modalview
-            viewHandler.displayTextInView();
-            // Display the comment in the commentbox
-            newComment.displayComment();
-            // After submitting new comments and closing the popupwindow the commentbox appears the next pageload
-            viewHandler.showCommentBoxAfterSubmit();
-            // Click event to store the new comment
-            document.getElementById('submitComment').addEventListener('click',function(e){     
-            
-            newComment.storeComment();
-            
-            
-            });
+           
     </script>
            
         
          <!----------***** End Commentbox stuff *****------------->
              <!---   Start the form    --> 
-        <form class = "my-form" id = "question-form" style = "" action= "index.html">
            
             <table style = "display:none;" width = "200px" class = "table-hover" id = "question"> <!-- Start table -->
            
             <tr>
-                <th  style = "font-size:20px; " align = "left" id = "labelsView">
+                <th  style = "font-size:20px; " valign = "left" id = "labelsView">
                </th>
     
             </tr>
@@ -116,10 +112,10 @@
              event_control.adClickedToButton();
              event_control.addListenerToProfileLink();
                          
-             // Create the profile for the questions// Profile array is containing all the questions of the profile
-             let profile2 = new Profile(profile_array[1],'Markmið', 2, labelsarray);
-             let profile = new Profile(profile_array[0],'Þitt mat (ráðþegi) ',1,labelsarray);
-             let profile3 = new Profile(profile_array[2],'Mat ráðgjafa ',3,labelsarray);
+            // Create the profile for the questions// Profile array is containing all the questions of the profile
+             var profile2 = new Profile(profile_array[1],'M?l', 2, labelsarray);
+             var profile = new Profile(profile_array[0],'Ung',1,labelsarray);
+             var profile3 = new Profile(profile_array[2],'Professionel',3,labelsarray);
 
              // get the stored result for the Chart
              var storedResults = profile.getResults(); 
@@ -130,96 +126,127 @@
     </script>
             
             </table>   <!-- End the table -->
- 
-         </form> <!-- End of the form -->
          
-         <div id = "panel" class="panel"> </div>
-           
-        <script> document.getElementById('panel').innerHTML = viewHandler.displayManualInputView();</script>
+         <div id = "questionnaire">
+             
+            <div id = "questionnaire-inner" class="panel"> </div>
+         </div>
          
-
+        <script> 
+        
+        document.getElementById('questionnaire-inner').innerHTML = viewHandler.displayManualInputView();
+        
+        </script>
+         
          </div>
                     
-         <div class = "col-lg-5">
-             <div id = "for-print">
+         <div class = "col-lg-12">
                 <div id = "result-container" class = "result-direct">
-                   
-                  <div id = "profilename"></div>
+                    <div class= "table-panel panel ">
+                    <div class="panel-body">
+                        <div class = "name-and-date">
+                            <p id = "dato"></p>
+                            <h3>Dit navn</h3>
+                        </div>
+                    <table  id = "resultViewDir"> </table>
+                    <div id = "resultMobileView"></div>
+                    </div>
                                   
-                 <div id = chartContainer>
-                        <hr/> 
-                 <canvas id = "myChart"> </canvas>
-                  
-              </div>
-                     <button class = "btn btn-secondary" id = 'download-pdf'>Hlaða niður PDF skjali</button> 
-                     <button class = "btn btn-secondary" id = 'download-full-pdf'>Hlaða niður PDF skjali(full version) </button> 
-                   
-
-                 </div>
-                </div> <!-- End col -->
+                  <div id = chartContainer>
+                  <canvas id = "myChart"> </canvas>
+                  <div id = "chart-legends"></div>
+                </div>
+                <div class = 'download-button-container'>
+                    <button class = "download-btn btn-success" id = 'download-pdf'>Download </button>    
+                    <button class = "download-btn  btn-success" id = 'download-full-pdf'>Download med svar </button>
+                    <a href = "" class = " download-btn btn btn-success" id = 'reset'>Start forfra</a>
+                </div>	
+                 </div>  
                  
              </div> <!-- End row -->
             
-                  </div> <!-- End container -->
-               
+             
           <script>
+              
+              $('#reset').click(function(e){
+                        e.preventDefault();
+                        sessionStorage.clear();
+                        location.replace('http://'+location.host+'/multiquestion-actual-version/index.html');
+                        
+                    });
+                    
+              let now = new Date();
+						 let correctMonth = now.getMonth()+1;
+						 let surveyDate = now.getDate()+' - '+correctMonth+' - '+now.getFullYear();
+						 document.getElementById('dato').innerHTML = surveyDate;
               // Get the array for the full version PDF 
              let fullPDFQuestions = new Question();
-             let fullProfile1 = fullPDFQuestions.fullPDFdata(profile.questions,labelsarray);
-             let fullProfile2 = fullPDFQuestions.fullPDFdata(profile2.questions,labelsarray);
-             let fullProfile3 = fullPDFQuestions.fullPDFdata(profile3.questions,labelsarray);
-            document.getElementById('manual-sub').addEventListener('click', function(){
+             let fullProfile1 = fullPDFQuestions.fullPDFdata(profile.questions,labelsarray,commentsArrProf1);
+				let fullProfile2 = fullPDFQuestions.fullPDFdata(profile2.questions,labelsarray,commentsArrProf2);
+				let fullProfile3 = fullPDFQuestions.fullPDFdata(profile3.questions,labelsarray, commentsArrProf3);
+            document.getElementById('manual-sub').addEventListener('click', function(e){
+                
             
             switch(sessionStorage.profileid){
                 
                 case '1':   
-                data2.setManualData(); 
-                break;
+                data2.setManualData();
+                sessionStorage.setItem('on_load_counter',7); 
                 
+                break;
                 case '2':
                 data3.setManualData();
+                sessionStorage.setItem('on_load_counter',7); 
+               
                 break;
-                
                 case '3':
                 data5.setManualData();
-                 
+                sessionStorage.setItem('on_load_counter',7); 
+            
                 }
-                
-            });
-             
-          switch(profile_id){
-                
-            case '1':
-                document.getElementById('profilename').innerHTML = profile.get_profile_name();
-                break;
-            case '2':
-                document.getElementById('profilename').innerHTML = profile2.get_profile_name();
-                break;
-            case '3':
-                document.getElementById('profilename').innerHTML = profile3.get_profile_name();
+                e.preventDefault();
+                location.replace('http://'+location.host+'/toolbox/erhvervsparathed/index.html');
                
-             }
+            });
+            document.getElementById('resultViewManual').innerHTML = data.setResultViewIdsDirect();  
+            
+
+            switch(sessionStorage.profileid){
+                case '1': data2.insertResultDirect();
+                
+                          break;
+                case '2': data3.insertResultDirect();
+                
+                          break;
+                case '3': data5.insertResultDirect();
+               
+               }
+           
+
             var labels = new Label();
             let view = document.getElementById("labelsView");
             var labelsarr = labels.setLabels(view);
+            document.getElementById('resultViewDir').innerHTML = data.directResultViewId();
 
-          
-           document.getElementById('resultView').innerHTML = labelsarr+data.setResultViewIds();  
-               
-               switch(sessionStorage.profileid){
-                case '1': data2.insertResultDirect();
-                          break;
-                case '2': data3.insertResultDirect();
-                          break;
-                case '3': data5.insertResultDirect();
-               }
+            switch(sessionStorage.profileid){
+								case '1': data2.setDirectResults();
+													data2.setMobileResultView(labelsarray);
+													break;
+								case '2': data3.setDirectResults();
+													data3.setMobileResultView(labelsarray);
+													break;
+								case '3': data5.setDirectResults();
+													data5.setMobileResultView(labelsarray); 
+                             }
+                            
+
                 /*****Add eventlisteners to the inputfield*****/
               
              // Only allow digitis 0 - 4 
              let input_control = new InputControl();
              // Check for browser IE11
              var isIE11 = !!window.MSInputMethodContext && !!document.documentMode;
-             var score_field = document.getElementsByClassName("score");
+             var score_field = document.getElementsByClassName("manual-score");
             
              for(var i = 0; i< score_field.length; i++){
                 
@@ -246,71 +273,97 @@
                  
              }
             /*****End Add eventlisteners to the inputfield*****/
-            
+            viewHandler.getTaxomoniView();
                let navigationObj = $('.clickevent');
                event_control.clickableLabels(navigationObj);
-              
-                
+               
+                               
               var ctx = document.getElementById('myChart').getContext('2d');
               let PDF = new PrintToPdf(storedResults,storedResults2,storedResults3,labelsarray);
             //event_control.clickableLabels();
               document.getElementById('download-pdf').addEventListener("click", PDF.downloadResultsOnly);
               document.getElementById('download-full-pdf').addEventListener("click", PDF.downloadFullPDF);
+              
              
+              let sizeOfLableFont = 13;
+						if(screen.width < 401){
+					sizeOfLableFont = 10;
+				}
+              Chart.defaults.global.defaultFontFamily = "Barlow Semi Condensed";
+				
+				
+				Chart.defaults.global.legend.position = 'bottom';
+				Chart.defaults.global.legend.display = false;
+				Chart.defaults.global.legend.labels.padding = 20;
 
-            var chart = new Chart(ctx, {
-            // The type of chart we want to create
-             type: 'radar',
+				
+				var chart = new Chart(ctx, {
+		// The type of chart we want to create
+						type: 'radar',
+						
 
-             // The data for our dataset
-   				
-             data: {
-                labels: labelsarray,
-                datasets: [{
-                label:profile.get_profile_name() ,
-                backgroundColor: 'rgba(255,255, 255,0.0)',
-                borderColor: '#333',
-                data: storedResults,
-                borderWidth: 10
-            },
-       
-            { 
-                label:profile2.get_profile_name() ,
-                backgroundColor: 'rgba(255, 255, 255,0.0)',
-                borderColor: '#333',
-                data: storedResults2,
-                borderWidth: 2
-               
-
-           },
-           { 
-                label:profile3.get_profile_name() ,
-                backgroundColor: 'rgba(255, 255, 255,0.0)',
-                borderColor: '#000',
-                data: storedResults3,
-                
-                 borderDash: [10,5]
-
-           } 
-        ],   
-    },
-        // Configuration options go here
-            options: {
-                scale: {
-                ticks: {
-                    beginAtZero: true,
-                    max: 5,
-            
-        },
-            pointLabels: {
-                fontSize: 13,
-  },
-    },
-            maintainAspectRatio: false,
-                 
-     }
+		// The data for our dataset
+	 				
+						data: {
+								labels: labelsarray,
+								datasets: [{
+								label:profile.get_profile_name() ,
+								backgroundColor: 'rgba(255,255, 255,0.0)',
+								borderColor: '#609fc2',
+								data: storedResults,
+								borderWidth: 3
+						},
+						{ 
+								label:profile2.get_profile_name() ,
+								backgroundColor: 'rgba(255, 255, 255,0.0)',
+								borderColor: '#dfab61',
+								data: storedResults2,
+								borderWidth: 2
+					 },
+					 { 
+								label:profile3.get_profile_name() ,
+								backgroundColor: 'rgba(255, 255, 255,0.0)',
+								borderColor: '#001b4d',
+								data: storedResults3,
+								borderDash: [10,5]
+					 } 
+				],   
+		},
+				// Configuration options go here
+				options: {
+					legendCallback: function(chart) {
+    					var text = [];
+    					text.push('<ul class = "chart-legend">');
+						let profBorderStyle = 'solid';
+    				for (var i=0; i<chart.data.datasets.length; i++) {
+						if(i == 2) {
+							profBorderStyle = 'dashed';
+						}
+      					console.log(chart.data.datasets[i]); // see what's inside the obj.
+     					 text.push('<span style = "font-size: 14px;" >' + chart.data.datasets[i].label + '</span>');
+      					text.push('<div style = "position: absolute;display: inline; border-bottom: 3px '+profBorderStyle +'; width: 40px; left:115px; margin-top: 15px; border-color: '+chart.data.datasets[i].borderColor+';"></div><li class = "legend">');
+     					 text.push('</li>');
+   					 }
+    				text.push('</ul>');
+    				return text.join("");
+ 					},
+					scale: {
+						ticks: {
+							beginAtZero: true,
+							max: 5,
+							fontFamily: 'Barlow Semi Condensed'
+						},
+						
+				pointLabels: {
+								fontSize: sizeOfLableFont,
+	},
+		},
+		responsive:true,
+				maintainAspectRatio: true,
+								 
+		 }
 });  
-    
+document.getElementById('chart-legends').innerHTML = chart.generateLegend();
             </script>
           
            <script>
@@ -320,12 +373,11 @@
             
            </script>
                 </div>
-            </div>
-
+            </div> <!--En container-->
         
      <footer id = 'footer'>  </footer>
              
-   <!--<script> document.getElementById('footer').innerHTML = viewHandler.displayFooter();</script>-->
+   <script> document.getElementById('footer').innerHTML = viewHandler.displayFooter();</script>
 
 <script type="text/javascript" src="pdfmake-master/build/pdfmake.min.js"></script>
 <script type="text/javascript" src="pdfmake-master/build/vfs_fonts.js"></script>

@@ -5,414 +5,447 @@
         <meta charset="Mac-iceland">
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
         <script src = "src/jquery.js"></script>
-        <script src =" bootstrap/js/bootstrap.min.js"></script>
-        <link rel="stylesheet" type="text/css" href="bootstrap/css/bootstrap.min.css">
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.7.3/Chart.js"></script>
-        <script src="jsPDF-master/src/Chart.js"></script>
-        <script src = "src/wysiwyg.js"></script>	
-        <script src = "src/loadCounter.js"></script>
-        <script src = "src/View.js"></script>
-        <script src = "src/Reset.js"></script>
-        <script src = "src/InputControl.js"></script>
-        <script src = "src/Question.js"></script>
-        <script src = "src/Profile.js"></script>
-        <script src = "src/PrintToPdf.js"></script>
-        <script src = "src/Result.js"></script>
-        <script src = "src/Comment.js"></script>
-        <script src = "src/QuestionsDataModel.js"></script>
-        <script src = "src/Label.js"></script>
-        <script src = "src/EventsControl.js"></script>
-        <link rel="stylesheet" type="text/css" href="style.css">
-    
-    </head>
-    
-        <body id = "print-body">
-            
-            <div class = "container">
-                <div class = "row">
-                    
-                    <div class = "col-lg-7">
-                     
-                <h1>Mat á starfsþroska  </h1>
-                   
-               <p id = "intro-message"></p>
-                 <div class = 'profile-buttons'>
-                <button id = 'profileid_1' class = "btn profile-menu-item" value = 1>Þitt mat (ráðþegi) </button>
-                <button id = 'profileid_2' class = "btn profile-menu-item" value = 2>Markmið</button>
-                <button id = 'profileid_3' class = "btn profile-menu-item" value = 3>Mat ráðgjafa </button>
-                </div>
-                 
-                <div class = "row">
-                <div id = 'tax-view' class = "tax-container col-lg-5"></div>
-                    
-                <script>
-                  // Create the viewobject
-                let viewHandler = new View();
-                document.getElementById('tax-view').innerHTML = viewHandler.showTaxamoniView(taxo);</script>
-                 
-               <div class = "container" id = "info-box"></div>
-               <script>
-                document.getElementById('info-box').innerHTML = newView.displayInfoMessage();
-               </script>
-                
-                <div class = " col-lg-6 card comment-card">
-                     
-                    <a id = "accordion-link" class="accordion-header" data-toggle="collapse" href="#collapseCommentBox"aria-expanded="false" aria-controls="collapseCommentBox">
-                   Comments<span id = "collapse-sign" style = "float:right;margin-top:-10px; font-size:30px;">+</span>
-                    </a>
-                    
-                    
-                     <div class="collapse " id="collapseCommentBox">
-                    
-                    <div class = "card-body rounded" id = "comment">
-                      
-                    </div>
-                    <br>
-              
-                    </div>  
-                </div>
-                <script>
-                    $("#accordion-link").click(function(){
-                        if(!$("#collapseCommentBox").hasClass('show')){
-                            document.getElementById('collapse-sign').innerHTML = "-  ";
-                        }
-                        else {
-                             document.getElementById('collapse-sign').innerHTML = "+";
-                        }
+		<script src="src/jquery-ui.js"></script>
+		<script src =" bootstrap/js/bootstrap.min.js"></script>
+		<link rel="stylesheet" type="text/css" href="bootstrap/css/bootstrap.min.css">
+		<link href="jquery-ui.css" rel="stylesheet">
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.7.3/Chart.js"></script>
+		<script src="jsPDF-master/src/Chart.js"></script>
+		<script src = "src/wysiwyg.js"></script>	
+		<script src = "src/BackAndForward.js"></script>	
+		<script src = "src/loadCounter.js"></script>
+		<script src = "src/View.js"></script>
+		<script src =  "src/helpers.js"></script>
+		<script src = "src/Reset.js"></script>
+		<script src = "src/InputControl.js"></script>
+		<script src = "src/Question.js"></script>
+		<script src = "src/RangeSlider.js"></script>
+		<script src = "src/Profile.js"></script>
+		<script src = "src/PrintToPdf.js"></script>
+		<script src = "src/Result.js"></script>
+		<script src = "src/Comment.js"></script>
+		<script src = "src/QuestionsDataModel.js"></script>
+		<script src = "src/Label.js"></script>
+		<script src = "src/EventsControl.js"></script>
+		<link href="https://fonts.googleapis.com/css?family=Barlow+Semi+Condensed:300,400,400i,500,600,700" rel="stylesheet">
+		<link rel="stylesheet" type="text/css" href="style.css">
+	</head>  
+	<script> 
+	 
+		if(id === null){
+  			id =1;
+		}
+		
+		
+			
+	</script>
+		<body id = "print-body">
+			<div class = "container">
+				<div class = "row">
+					<div class = "col-lg-12">
+						<div id = "title"></div>
+						<script>
+							newView.setTitle();
+						</script>
+						
+				<div id="accordion">
+					<div class="card accordion__card">
+					  <a class="card-header" id="accordion__heading">
+						<h5 class="mb-0">
+						  <div id = "collapse-id"  class="" data-toggle="collapse" data-target="#collapseOne" aria-expanded="false" aria-controls="collapseOne">
+							OM METODEN
+						  </div>
+						</h5>
+					</a>
+	
+					  <div id="collapseOne" class="collapse hide" aria-labelledby="accordion__heading" data-parent="#accordion">
+						<div id = 'accordion__body' class="card-body">
+							<p>Her kan du lave et aktuelt billede af din erhvervsparathed. N?r du har besvaret en r?kke sp?rgsm?l i 6 blokke, resulterer dine svar i et billede. Billedet minder om en radar eller et spindelv?v.</p>
+
+							<p>Erhvervsparathed er dine kompetencer og dine potentialer for at starte og holde fast i et job eller i praktik. Det g?lder ogs?, n?r du t?nker p? at starte p? en erhvervsuddannelse eller er igang med den.</p>
+	
+							<p>Billedet g?lder kun dig selv og kun for den situation, som du befinder dig i lige nu. Du kan altid udvikle dig videre og ?ndre din situation. </p>
+	
+							<p>Det tager ca. 20 minutter. Dine svar bliver ikke gemt, og de bliver ikke givet videre til andre. Men du kan udskrive billedet og svarene, hvis du vil.</p>
+
+							<span>For professionelle: L?s mere i <a style = "color: #5593c2" href = "TOOL-Erhvervsparathed2020-april.pdf" target = "_blank"> Guide for anvendelse.</a></span>
+						</div>
+					  </div>
+					</div>
+				</div>	
+				
+			<div class = "row">
+			<div id = 'tax-view' class = "tax-container"></div>
+				
+			<script> 
+		
+			$('#accordion').on('hidden.bs.collapse', removeBackground);
+			$('#accordion').on('shown.bs.collapse', addBackground);
+			$('#collapse-id').addClass('accordion__plussign');
+					// Create the viewobject
+					let viewHandler = new View();	
+					
+		 		</script>
+			</div>  
+			
+			<!--<form action = "index.html" id = "name-input" >
+			<input id = "name-field" type = "text" name ="namevalue" placeholder="Indtast dit navn" value = "" />
+			
+			</form>
+			<a href="#" class = "btn">GEM</a>-->
+	<script>
+       /* sessionStorage.setItem('username',$("input[name='namevalue']").val());
+		$('#name-field').val(sessionStorage.getItem('username'));
+		*/
+	</script>
+	<div id = "display-profile-btn"></div>
+	<script>
+			document.getElementById('display-profile-btn').innerHTML = newView.displayProfileButtons();
+	</script>
+			 <!---   Start the form    --> 
+			 <div id = "questionnaire">
+			<div id = "new-top"></div>
+			
+	        <div id = "questionnaire-inner">
+			<form  name = "my-form" id = "question-form"  action= "index.html">
+				
+			<div id = "question"> <!--start question block -->
+				<div  id = "info-box"></div>
+				<div id = "step-count-container">
+				</div>
+				
+				<h2 id = "labelsView">  </h2>
+				<div id = "tax"></div>
+	<script>
+		viewHandler.getTaxomoniView();
+		document.getElementById('info-box').innerHTML = newView.displayInfoMessage();	
+		
+         
+					// Init dataobjects
+				var data = new Result(id,1);
+				var data2 = new Result(id,1);
+				var data3 = new Result(id,2);
+				var data5  = new Result(id,3);
+				
+			
+					// Make the profilelinks active 
+				event_control.adClickedToButton();
+				event_control.addListenerToProfileLink();
+												 
+				// Create the profile for the questions// Profile array is containing all the questions of the profile
+				var profile2 = new Profile(profile_array[1],'M?l', 2, labelsarray);
+				var profile = new Profile(profile_array[0],'Ung',1,labelsarray);
+				var profile3 = new Profile(profile_array[2],'Professionel',3,labelsarray);
+						 
+				 // Get the array for the full version PDF 
+				let fullPDFQuestions = new Question();
+				let fullProfile1 = fullPDFQuestions.fullPDFdata(profile.questions,labelsarray,commentsArrProf1);
+				let fullProfile2 = fullPDFQuestions.fullPDFdata(profile2.questions,labelsarray,commentsArrProf2);
+				let fullProfile3 = fullPDFQuestions.fullPDFdata(profile3.questions,labelsarray, commentsArrProf3);
+				console.log(fullProfile1);			
+						 // get the stored result for the Chart
+				var storedResults = profile.getResults(); 
+				var storedResults2 = profile2.getResults();
+				var storedResults3 = profile3.getResults();
+				let profile_id = sessionStorage.profileid;
+				var que = new Question();
+				 //profile_id = setProfileOnFirstLoad();
+					
+				 /************Handle the questions************/
+				switch(profile_id){
+					// If profile id is empty then create a intro tekst
+					case undefined:
+					/*document.getElementById('start-message').innerHTML = newView.displayIntroMessage(); */
+					profile.getQuestions();
+						break;
+						// Load the questions of the 1. profile
+					case '1': profile.getQuestions();
+						break;
+						// load the questions of the 2. profile
+					case '2': profile2.getQuestions();
+						break;
+						// load the questions of the 3. profile
+					case '3': profile3.getQuestions();
+				}
+						
+				/************End of questionsHandler************/
+					let range_slider = new RangeSlider();
+					var slideFull = $('<div class = "thumb-width"></div>');
+					
+					var range_value = document.getElementsByClassName('score-val');
+					console.log(range_value);
+					for( var  i = 0; i < range_value.length; i++ ) {
+						let widthVal = String(range_value[i].value*10*2+'%');
+						range_slider.setRangeSlider(i,range_value[i].value,range_value.length);	
+					}	
+					
+					
+			 </script>
+		     
+				</div>   <!-- End question box -->
+			
+				
+				<script>
+					document.getElementById("back-and-forward").innerHTML = viewHandler.setBackAndForward();
+		// Create the viewobject
+					
+					
+				</script>
+					 <textarea class = "form-control" id = "text-add" placeholder="Bem?rkninger"></textarea>
+					 <input id = "sub" class = " sub btn-success" id = 'new-top' type = "submit" value = "Videre"/>
+				 <!----------***** End Commentbox stuff *****------------->
+				<div class = "container btn-container">
+				
+			</div>
+	 
+				 </form>
+		<script>
+				let labelObj = new Label();
+			
+				$('#add-comment').click(function(){
+						newComment.storeComment();
+				});
+				$('#text-add').html(sessionStorage.getItem('comment'+id+'profile'+profile_id));
+				</script>
+				  <!-- End of the form -->
+		</div>
+	</div>
+				<div class = "col-lg-12">
+					 
+					 <script>
+						 // *********** Result data interaction ************* //
+						let backAndForward = new BackAndForward();
+						backAndForward.forwardEvent();
+
+						$('#back').click(function(){
+						 if(id > 1) {
+							sessionStorage.setItem('on_load_counter',id-1);
+							location.reload();
+						 }
+        				});
+						 	
+						$('.sub').click(function(){
+						 
+						showid = "#"+id;
+						$('#result-container').fadeIn();
+							// If the page is loaded for the first time, the id must be one 
+						 if(sessionStorage.getItem('first_load') === null){
+								sessionStorage.setItem('first_load',false);
+								// When on_load_counter i set the first time its set to 1
+								sessionStorage.setItem('on_load_counter',1);	
+						 }
+								// The rest of the time we use this block to store inputdata
+								switch(profile_id){
+							
+								case '1': let data2 = new Result(id,1);
+													data2.setData();
+													loadCounter() ;
+													break;
+								case '2': let data3 = new Result(id,2);
+													data3.setData();
+													loadCounter() ;
+													break;
+								case '3': let data5 = new Result(id,3);
+													data5.setData();
+													loadCounter();
+							}	
+						});
+						
+						if(profile_id === undefined) {
+						sessionStorage.setItem('profileid', '1');
+						profile_id = '1';
+					}
+						
+					 // *********** Result data interaction ************* //
+					</script>
+						 <div id = "for-print">
+								<div id = "result-container">
+									<div id = "profilename"></div>
+								
+									<div class= "table-panel panel ">
+									<div class="panel-heading"><br/></div>
+									<div class="panel-body">
+										<div class = "name-and-date">
+										<p id = "dato"></p>
+										
+										<h3 id = "your-name">Dit navn</h3>
+										
+									</div>
+									<script>
+							
+									
+										
+									</script>
+												<table  id = "resultView"> </table>
+									</div>
+								</div>
+						<script>
+						 let now = new Date();
+						 let correctMonth = now.getMonth()+1;
+						 let surveyDate = now.getDate()+'.  '+correctMonth+'. '+now.getFullYear();
+						 document.getElementById('dato').innerHTML = surveyDate;
+						 
+						</script>
+						
+							<div id = "resultMobileView"></div>
+							<div id = chartContainer>
+									<canvas id = "myChart"> </canvas>
+									<div id = "chart-legends"></div>
+									<canvas id = "legends-pdf"></canvas>
+							</div>
+							
+							<div id = "comment-view">
+								<h3 class = "comment-view__title">Bem?rkninger</h3>
+								<table class = "comment-view__labels"></table>
+							</div>
+								</div>
+								
+								</div> <!-- End col -->
+								<script>
+									$(".comment-view__labels").html(labelObj.setCommentViewLabels);
+								</script>
+						 </div>
+						 
+						  <!-- End row -->
+						 <div class = 'download-button-container'>
+							<button class = "download-btn btn-success " id = 'download-pdf'>Download</button>    
+							<button class = " download-btn btn-success " id = 'download-full-pdf'>Download med svar </button>
+							<a href = "" button class = "reset download-btn btn btn-success" id = 'reset'>Start forfra</a>
+						</div>	
+									</div> <!-- End container -->
+										
+					<script>
                         
-                        
-                        });
-                    
-                </script>
-               
-        <!----------***** Commentbox stuff *****------------->
-                <!--  modalboxview here -->
-                <div id = "modal-box"></div>
-                 <!-- End modalboxview here -->
-    <script>
-        
-           
-            // Insert the modalboxview inside the div
-            document.getElementById('modal-box').innerHTML = viewHandler.modalBoxView();
-            // Display the previus text in the modalview
-            viewHandler.displayTextInView();
-            // Display the comment in the commentbox
-            newComment.displayComment();
-            // After submitting new comments and closing the popupwindow the commentbox appears the next pageload
-            viewHandler.showCommentBoxAfterSubmit();
-            // Click event to store the new comment
-            document.getElementById('submitComment').addEventListener('click',function(){     
-            
-            newComment.storeComment();
-            
-            
-            });
-    </script>
-            </div>    
-        
-         <!----------***** End Commentbox stuff *****------------->
-          
-             <!---   Start the form    --> 
-        <form  name = "my-form" id = "question-form" style = "" action= "index.html">
-          
-            <table width = 100% class = "table-hover" id = "question"> <!-- Start table -->
-           
-             <tr>
-                <th  style = "font-size:30px; color:grey;" align = "left" id = "labelsView">  </th>
-             </tr>
-     
-        <script>
-            // Init dataobjects
-             var data = new Result(id,1);
-             var data2 = new Result(id,1);
-             var data3 = new Result(id,2);
-             var data5  = new Result(id,3);
-              
-            // Make the profilelinks active 
-             
-             event_control.addListenerToProfileLink();
-             event_control.adClickedToButton();
-                         
-             // Create the profile for the questions// Profile array is containing all the questions of the profile
-             let profile2 = new Profile(profile_array[1],'Markmið', 2, labelsarray);
-             let profile = new Profile(profile_array[0],'Þitt mat (ráðþegi) ',1,labelsarray);
-             let profile3 = new Profile(profile_array[2],'Mat ráðgjafa ',3,labelsarray);
-             
-               // Get the array for the full version PDF 
-             let fullPDFQuestions = new Question();
-             let fullProfile1 = fullPDFQuestions.fullPDFdata(profile.questions,labelsarray);
-             let fullProfile2 = fullPDFQuestions.fullPDFdata(profile2.questions,labelsarray);
-             let fullProfile3 = fullPDFQuestions.fullPDFdata(profile3.questions,labelsarray);
-             console.log(fullProfile1);
-              
-             // get the stored result for the Chart
-             var storedResults = profile.getResults(); 
-             var storedResults2 = profile2.getResults();
-             var storedResults3 = profile3.getResults();
-             var profile_id = sessionStorage.profileid;
-               
-             /************Handle the questions************/
-            
-             switch(profile_id){
-                // If profile id is empty then create a intro tekst
-                case undefined:
-                document.getElementById("intro-message").innerHTML = viewHandler.displayIntroMessage();
-                          break;
-                        // Load the questions of the 1. profile
-                case '1': profile.getQuestions();
-                          break;
-                        // load the questions of the 2. profile
-                case '2': profile2.getQuestions();
-                          break;
-                          // load the questions of the 3. profile
-                case '3': profile3.getQuestions();
-               
-             }
-            /************End of questionsHandler************/
-                  
-                 
-            /*****Add eventlisteners to the inputfield*****/
-              
-             // Only allow digitis 0 - 4 
-             let input_control = new InputControl();
-             // Check for browser IE11
-             var isIE11 = !!window.MSInputMethodContext && !!document.documentMode;
-             var score_field = document.getElementsByClassName("score");
-            
-             for(var i = 0; i< score_field.length; i++){
-                
-                  score_field[i].addEventListener('keydown',input_control.CheckNumber1);
-                  score_field[i].addEventListener('keyup',input_control.CheckNumber1);
-                  score_field[i].addEventListener('focus', input_control.emptyFieldOnFocus);
-                  score_field[i].addEventListener('focus', input_control.SetSelected);
-                 
-                 if(!isIE11){
-                    //Use the function if the browser is not IE11
-                 score_field[i].addEventListener('focus', input_control.emptyFieldOnFocus);
-                 
-                 }
-                 
-                 score_field[i].addEventListener('focusout',input_control.unDoHeighlight);
-                 
-             }
-                var chosenField = document.getElementsByClassName("next");
-             
-             for(var i = 0; i< chosenField.length; i++){
-                
-                 chosenField[i].addEventListener('mouseover',input_control.heiglightChosenField);
-                 chosenField[i].addEventListener('mouseout',input_control.unDoHeighlight);
-                 
-             }
-            /*****End Add eventlisteners to the inputfield*****/
-        
-     </script>
-                
-            </table>   <!-- End the table -->
+						var labels = new Label();
+						let view = document.getElementById("labelsView");
+						var labelsarr = labels.setLabels(view);
+					$('.reset').click(function(){
+						sessionStorage.clear();
+					})
+					 document.getElementById('resultView').innerHTML = data.setResultViewIds();
 
-      <input id = "sub" class = "  btn-success" id = 'next-subject' style = "float:right;" type = "submit" value = "Næsta ->"/>
+							 switch(sessionStorage.profileid){
+								case '1': data2.setResultView();
+													data2.setMobileResultView(labelsarray);
+													break;
+								case '2': data3.setResultView();
+													data3.setMobileResultView(labelsarray);
+													break;
+								case '3': data5.setResultView();
+													data5.setMobileResultView(labelsarray); 
+							 }
 
-         </form> <!-- End of the form -->
-    </div>
-                    <div class = "col-lg-5">
-        
-        
-           
-           <script>
-             // *********** Result data interaction ************* //
-           document.getElementById('sub').addEventListener('click',function(){
-             showid = "#"+id;
-            $('#result-container').fadeIn();
-                
-              // If the page is loaded for the first time, the id must be one 
-             if(sessionStorage.getItem('first_load') === null){
-                id = 1;
-              
-                // Set the next id to 2
-                sessionStorage.setItem('first_load',false);
-                // When on_load_counter i set the first time its set to 2
-                sessionStorage.setItem('on_load_counter',2);
-               
-               //Handle the  datastorage at first load
-               switch(profile_id){
-                case '1': let data = new Result(id,1);
-                          data.setData();
-                          
-                          break;
-                case '2': let data4 = new Result(id,2);
-                          data4.setData();
-                          //loadCounter() ;
-                          break;
-                case '3': let data5 = new Result(id,3);
-                          data5.setData();
-                          //loadCounter();
-               }
-  
-             } else {
-                // The rest of the time we use this block to store inputdata
-                switch(profile_id){
-                case '1': let data2 = new Result(id,1);
-                          data2.setData();
-                          loadCounter() ;
-                          break;
-                case '2': let data3 = new Result(id,2);
-                          data3.setData();
-                          loadCounter() ;
-                          break;
-                case '3': let data5 = new Result(id,3);
-                          data5.setData();
-                          loadCounter();
-               }
-               
-              }
+							 let navigationObj = $('.clickevent');
+							 event_control.clickableLabels(navigationObj);
+							
+				changeButtonOnLastQuestion();
+				hideQuestionBodyOnSubmitEnd()
+									
+				var ctx = document.getElementById('myChart').getContext('2d');
+				
+							let PDF = new PrintToPdf(storedResults,storedResults2,storedResults3,labelsarray);
+					 //event_control.clickableLabels();
+					 document.getElementById('download-pdf').addEventListener("click", PDF.downloadResultsOnly);
+					 document.getElementById('download-full-pdf').addEventListener("click", PDF.downloadFullPDF);
 
-            });
-           // *********** Result data interaction ************* //
-           
-           
-            </script>
-           
-             <div id = "for-print">
-                <div id = "result-container">
-                   
-                   
-                  <div id = "profilename"></div>
-                 <div class= "table-panel panel ">
-                    <div class="panel-heading"><br/></div>
-                    <div class="panel-body">
-                        
-                        <table  id = "resultView"> </table>
-                        
-                    </div>
-                </div>
-                  <div id = "resultMobileView"></div>
-                   
-                     
-                 <div id = chartContainer>
-                        <hr/> 
-                 <canvas id = "myChart"> </canvas>
-                  
-              </div>
-                 <button class = "btn btn-secondary" id = 'download-pdf'>Hlaða niður PDF skjali</button> 
-                 <button class = "btn btn-secondary" id = 'download-full-pdf'>Hlaða niður PDF skjali(full version) </button> 
+					</script>
+								 
+					<script>
+						
+						let sizeOfLableFont = 13;
+						if(screen.width < 401){
+					sizeOfLableFont = 10;
+				}
+				Chart.defaults.global.defaultFontFamily = "Barlow Semi Condensed";
+				Chart.defaults.global.legend.position = 'bottom';
+				Chart.defaults.global.legend.display = false;
+				Chart.defaults.global.legend.labels.padding = 20;
 
-                 </div>
-                </div> <!-- End col -->
-                 
-             </div> <!-- End row -->
-            
-                  </div> <!-- End container -->
-               
-          <script>
-            
-            var labels = new Label();
-            let view = document.getElementById("labelsView");
-            var labelsarr = labels.setLabels(view);
+				
+				var chart = new Chart(ctx, {
+		// The type of chart we want to create
+						type: 'radar',
+						
 
-          
-           document.getElementById('resultView').innerHTML = labelsarr+data.setResultViewIds();
-           
-               
-               switch(sessionStorage.profileid){
-                case '1': data2.setResultView();
-                          data2.setMobileResultView(labelsarray);
-                          break;
-                case '2': data3.setResultView();
-                          data3.setMobileResultView(labelsarray);
-                          break;
-                case '3': data5.setResultView();
-                          data5.setMobileResultView(labelsarray); 
-               }
-               
-            
-               let navigationObj = $('.clickevent');
-               event_control.clickableLabels(navigationObj);
-              
-                
-        var ctx = document.getElementById('myChart').getContext('2d');
-              let PDF = new PrintToPdf(storedResults,storedResults2,storedResults3,labelsarray);
-           //event_control.clickableLabels();
-           document.getElementById('download-pdf').addEventListener("click", PDF.downloadResultsOnly);
-           document.getElementById('download-full-pdf').addEventListener("click", PDF.downloadFullPDF);
-            
-            
-          </script>
-                 
-          <script>
-            let sizeOfLableFont = 13;
-            if(screen.width < 401){
-		      sizeOfLableFont = 10;
-	      }
-
-        var chart = new Chart(ctx, {
-    // The type of chart we want to create
-            type: 'radar',
-
-    // The data for our dataset
-   				
-            data: {
-                labels: labelsarray,
-                datasets: [{
-                label:profile.get_profile_name() ,
-               backgroundColor: 'rgba(255,255, 255,0.0)',
-                borderColor: '#333',
-                data: storedResults,
-                borderWidth: 10
-            },
-       
-            { 
-                label:profile2.get_profile_name() ,
-                backgroundColor: 'rgba(255, 255, 255,0.0)',
-                borderColor: '#333',
-                data: storedResults2,
-                borderWidth: 2
-               
-
-           },
-           { 
-                label:profile3.get_profile_name() ,
-                backgroundColor: 'rgba(255, 255, 255,0.0)',
-                borderColor: '#000',
-                data: storedResults3,
-                
-                 borderDash: [10,5]
-
-           } 
-        ],   
-    },
-        // Configuration options go here
-        options: {
-                scale: {
-                ticks: {
-        beginAtZero: true,
-        max: 5,
-            
-        },
-        pointLabels: {
-                fontSize: sizeOfLableFont,
-  },
-    },
-        maintainAspectRatio: false,
-                 
-     }
+		// The data for our dataset
+	 				
+						data: {
+								labels: labelsarray,
+								datasets: [{
+								label:profile.get_profile_name() ,
+								backgroundColor: 'rgba(255,255, 255,0.0)',
+								borderColor: '#609fc2',
+								data: storedResults,
+								borderWidth: 2
+						},
+						{ 
+								label:profile2.get_profile_name() ,
+								backgroundColor: 'rgba(255, 255, 255,0.0)',
+								borderColor: '#dfab61',
+								data: storedResults2,
+								borderWidth: 2
+					 },
+					 { 
+								label:profile3.get_profile_name() ,
+								backgroundColor: 'rgba(255, 255, 255,0.0)',
+								borderColor: '#001b4d',
+								data: storedResults3,
+								borderDash: [10,5]
+					 } 
+				],   
+		},
+				// Configuration options go here
+				options: {
+					legendCallback: function(chart) {
+    					var text = [];
+    					text.push('<ul class = "chart-legend">');
+						let profBorderStyle = 'solid';
+    				for (var i=0; i<chart.data.datasets.length; i++) {
+						if(i == 2) {
+							profBorderStyle = 'dashed';
+						}
+      					console.log(chart.data.datasets[i]); // see what's inside the obj.
+     					 text.push('<span style = "font-size: 14px;" >' + chart.data.datasets[i].label + '</span>');
+      					text.push('<div style = "position: absolute;display: inline; border-bottom: 3px '+profBorderStyle +'; width: 40px; left:115px; margin-top: 15px; border-color: '+chart.data.datasets[i].borderColor+';"></div><li class = "legend">');
+     					 text.push('</li>');
+   					 }
+    				text.push('</ul>');
+    				return text.join("");
+ 					},
+					scale: {
+						ticks: {
+							beginAtZero: true,
+							max: 5,
+							fontFamily: 'Barlow Semi Condensed'
+						},
+						
+				pointLabels: {
+								fontSize: sizeOfLableFont,
+	},
+		},
+		responsive:true,
+				maintainAspectRatio: true,
+								 
+		 }
 });  
-    
-            </script>
-          
-           <script>
-        
-           document.getElementById('download-pdf').addEventListener("click", PDF.downloadPDF);
-            
-           </script>
-                </div>
-            </div>
+document.getElementById('chart-legends').innerHTML = chart.generateLegend();
+					 document.getElementById('download-pdf').addEventListener("click", PDF.downloadPDF);
+						
+					 
+					
+					</script>
+					
+								</div>
+								
+						</div>
 
-        
-     <footer id = "footer">
-       
-             <!--<script> document.getElementById('footer').innerHTML = viewHandler.displayFooter();</script>       -->
-                    
-                    
-                 </footer>
+						<hr/>
+		 <footer id = "footer">
+			 
+						 <script> document.getElementById('footer').innerHTML = viewHandler.displayFooter();</script>       
+										
+										
+								 </footer>
 
 <script type="text/javascript" src="pdfmake-master/build/pdfmake.min.js"></script>
 <script type="text/javascript" src="pdfmake-master/build/vfs_fonts.js"></script>
