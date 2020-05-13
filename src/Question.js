@@ -47,7 +47,7 @@ Question = function(){
 		$( "#score1" ).slider({
 			value: val,
 			min: 0,
-			max: 5,
+			max: 4,
 			step: 1,
 			slide: function(event, ui){
 				$(this).next("#range-value").html(ui.value);
@@ -60,7 +60,7 @@ Question = function(){
 		$( "#score2" ).slider({
 			value: val,
 			min: 0,
-			max: 5,
+			max: 4,
 			step: 1,
 			slide: function(event, ui){
 				$(this).next("#range-value").html(ui.value);
@@ -72,7 +72,7 @@ Question = function(){
 	this.addJsRangeInput = function(val){
 		var inp = document.createElement("INPUT");
 				inp.setAttribute('value', val);
-				inp.setAttribute('max', 5);
+				inp.setAttribute('max', 4);
 				inp.setAttribute('type','range');
 				inp.setAttribute('id', 'score');
 				inp.setAttribute('class', 'score');

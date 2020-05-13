@@ -1,7 +1,7 @@
 Label = function(){
 	
 	this.setLabels = function(view){
-		var labelarr = ["FÃ©lagslegar aÃ°stÃ¦Ã°ur ","MarkmiÃ°asetning","Hvatning","Sveigjanleiki","Seigla","StarfshÃ¦fni"];
+		var labelarr = ["Félagslegar ağstæğur ","Markmiğasetning","Hvatning","Sveigjanleiki","Seigla","Starfshæfni"];
 		var labelstr = "";
 		for(var i = 0; i < labelarr.length; i++){
 			if(view.innerHTML.includes(labelarr[i])){
@@ -15,8 +15,8 @@ Label = function(){
 	}; 
 
 	this.setCommentViewLabels = function(){
-		var labelarr = ["FÃ©lagslegar aÃ°stÃ¦Ã°ur ","MarkmiÃ°asetning","Hvatning","Sveigjanleiki","Seigla","StarfshÃ¦fni"];
-		let profiles = ['Ung','M?Ã¢?Å‹l','Professionel'];
+		var labelarr = ["Félagslegar ağstæğur ","Markmiğasetning","Hvatning","Sveigjanleiki","Seigla","Starfshæfni"];
+		let profiles = ['Şitt mat (ráğşegi)','Markmiğ','Mat ráğgjafa'];
 		let comments = [commentsArrProf1,commentsArrProf2,commentsArrProf3];
 		
 		let html = "";
@@ -30,9 +30,8 @@ Label = function(){
 	}
 };      
   
-var labelsarray = ["FÃ©lagslegar aÃ°stÃ¦Ã°ur ","MarkmiÃ°asetning","Hvatning","Sveigjanleiki","Seigla","StarfshÃ¦fni"];
+var labelsarray =  [" Félagslegar ağstæğur ","Markmiğasetning","Hvatning","Sveigjanleiki","Seigla","Starfshæfni"];
 
-var profile1_labelarr = ["testaf ny profio","nye labels","wordtest","hvad er det", "mums"];
 	   var label;
 	   
 	   var id = sessionStorage.getItem('on_load_counter');

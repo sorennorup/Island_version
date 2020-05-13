@@ -41,6 +41,7 @@
 	</script>
 		<body id = "print-body">
 			<div class = "container">
+       
 				<div class = "row">
 					<div class = "col-lg-12">
 						<div id = "title"></div>
@@ -131,11 +132,10 @@
 					// Make the profilelinks active 
 				event_control.adClickedToButton();
 				event_control.addListenerToProfileLink();
-												 
 				// Create the profile for the questions// Profile array is containing all the questions of the profile
-				var profile2 = new Profile(profile_array[1],'M?l', 2, labelsarray);
-				var profile = new Profile(profile_array[0],'Ung',1,labelsarray);
-				var profile3 = new Profile(profile_array[2],'Professionel',3,labelsarray);
+				var profile2 = new Profile(profile_array[1],'Markmið', 2, labelsarray);
+				var profile = new Profile(profile_array[0],'Þitt mat (ráðþegi)',1,labelsarray);
+				var profile3 = new Profile(profile_array[2],'Mat ráðgjafa',3,labelsarray);
 						 
 				 // Get the array for the full version PDF 
 				let fullPDFQuestions = new Question();

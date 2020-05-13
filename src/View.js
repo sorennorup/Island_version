@@ -1,18 +1,18 @@
 View = function(){
 
-	this.taxomoni = ['Ikke vigtigt','Vil gerne','PrÃ¸ver','I gang','Godt pÃ¥ vej','Styr pÃ¥ det'];
+	this.taxomoni = ['Á ekki við ','Mjög ósammála','Frekar ósammála','Hlutlaus','Frekar sammála'];
 
 	this.setTitle = function(){
-		let html = '<h1>ERHVERVSPARATHED <br/><span style = "text-transform:lowercase; font-size: 1.9rem;">- En selvevaluering i dialog</span> </h1>';
+		let html = '<h1>Mat á starfsþroska  <br/></h1>';
 		document.getElementById('title').innerHTML = html;
 	}
 
 	
 	this.displayProfileButtons = function(){
 		let html = ' <div class = "profile-buttons">'+
-		   '<button id = "profileid_1" class = "btn-success profile-menu-item" value = 1>Ung</button>'+
-		   '<button id = "profileid_2" class = "btn-success profile-menu-item" value = 2>MÃ¥l</button>'+
-		   '<button id = "profileid_3" class = "btn-success profile-menu-item" value = 3>Professionel</button>'+
+		   '<button id = "profileid_1" class = "btn-success profile-menu-item" value = 1>Þitt mat (ráðþegi)</button>'+
+		   '<button id = "profileid_2" class = "btn-success profile-menu-item" value = 2>Markmið</button>'+
+		   '<button id = "profileid_3" class = "btn-success profile-menu-item" value = 3>Mat ráðgjafa</button>'+
 	   '    </div>';
 	   return html;
 	}
