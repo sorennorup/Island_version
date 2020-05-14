@@ -1,6 +1,6 @@
 View = function(){
 
-	this.taxomoni = ['Á ekki við ','Mjög ósammála','Frekar ósammála','Hlutlaus','Frekar sammála'];
+	this.taxomoni = ['Á ekki við ','Mjög ósammála','Frekar ósammála','Hlutlaus','Frekar sammála','Mjög sammála'];
 
 	this.setTitle = function(){
 		let html = '<h1>Mat á starfsþroska  <br/></h1>';
@@ -32,7 +32,7 @@ View = function(){
 	 
 	 this.displayManualInputView = function(){
 		 let html = '<div id = "info-box">'+
-			   ' <a style = "" class = "" href = "index.html">Besvar med spÃ¸rgsmÃ¥l</a><br/> Indtast fra skalaen 0 - 5 (decimaler er mulige)</div>'+
+			   ' <a style = "" class = "" href = "index.html">Svara með spurningum</a><br/> Veldu tölu á skalanum 0-5</div>'+
 				'<form action = "resultInsert.html"><div class = "manualView"  id = "resultViewManual"> </div>'+         
 				'<input id = "manual-sub"  class = "btn btn-success" type = "submit" value= "Videre" /></form>';
 		 return html;
@@ -40,7 +40,7 @@ View = function(){
 
 	 this.displayInfoMessage = function(){
 		  let message = 
-			 '<a style = " z-index:9999; color: #71b7df; text-decoration: underline;"  href = "resultInsert.html"> Spring spÃ¸rgsmÃ¥l over</a>'+
+			 '<a style = " z-index:9999; color: #71b7df; text-decoration: underline;"  href = "resultInsert.html"> Sleppa spurningum</a>'+
 			   ' <br/>'+
 			   ' <a style = " z-index:9999; color: #71b7df;" href = "measure.html"></a>';
 		return message;
@@ -62,9 +62,7 @@ View = function(){
 					
 						'<img class = "footer-logo"  src = "logoer/Erasmus-250x59.png"  />'+
 					
-						'<img class = "footer-logo"  src = "logoer/UUDK-logo-300W.png"  />'+
-
-						'<img class ="footer-logo"  src = "logoer/moeve.png"  />'+
+						'<img class = "footer-logo"  src = "logoer/vmst.png"  />'+
 					'</div>';
 			html +=	'<div id = "footer-links"> '+
 						'<a href = "#" class = "footer-arrow footer-link">Tak til</a>'+

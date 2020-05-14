@@ -36,7 +36,7 @@ PrintToPdf = function(results1,results2,results3,labelarr){
 		},
 		
 		
-		{text: 'BEMÆRKNINGER',style: 'header2'},
+		{text: 'Athugasemdir',style: 'header2'},
 		
 		{
 		table: {	

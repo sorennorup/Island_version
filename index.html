@@ -54,22 +54,26 @@
 					  <a class="card-header" id="accordion__heading">
 						<h5 class="mb-0">
 						  <div id = "collapse-id"  class="" data-toggle="collapse" data-target="#collapseOne" aria-expanded="false" aria-controls="collapseOne">
-							OM METODEN
+              <div style = "text-transform: uppercase;">Upplýsingar fyrir þátttakendur</div>
 						  </div>
 						</h5>
 					</a>
 	
 					  <div id="collapseOne" class="collapse hide" aria-labelledby="accordion__heading" data-parent="#accordion">
 						<div id = 'accordion__body' class="card-body">
-							<p>Her kan du lave et aktuelt billede af din erhvervsparathed. N?r du har besvaret en r?kke sp?rgsm?l i 6 blokke, resulterer dine svar i et billede. Billedet minder om en radar eller et spindelv?v.</p>
+							<p>Spurningar þessar eru hluti af matstæki sem er þróað af fjórum löndum. </p>
 
-							<p>Erhvervsparathed er dine kompetencer og dine potentialer for at starte og holde fast i et job eller i praktik. Det g?lder ogs?, n?r du t?nker p? at starte p? en erhvervsuddannelse eller er igang med den.</p>
+							<p>Hér getur þú búið til mynd af starfsþroska þínum eins og hann er í dag. Þegar þú hefur svarað spurningunum sem er skipt upp í sex flokka færðu niðurstöðu um starfsþroska þinn myndrænt. Myndin líkist kóngulóarvef.</p>
 	
-							<p>Billedet g?lder kun dig selv og kun for den situation, som du befinder dig i lige nu. Du kan altid udvikle dig videre og ?ndre din situation. </p>
+							<p>Starfsþroski þinn er metinn út frá hæfni þinni og möguleikum þínum að byrja í vinnu, skóla eða þjálfun og halda því sambandi. </p>
 	
-							<p>Det tager ca. 20 minutter. Dine svar bliver ikke gemt, og de bliver ikke givet videre til andre. Men du kan udskrive billedet og svarene, hvis du vil.</p>
+              <p>Myndin á aðeins við um þinn starfsþroska og er tekið mið að aðstæðum þínum eins og þær eru í dag. Þú getur alltaf fengið tækifæri til að náð lengra og breyta aðstæðum þínum. </p>
+              
+              <p>Það tekur u.þ.b. 20 mínútur að fara í gegnum spurningarnar. Svör þín verða ekki vistuð og þau verða ekki aðgengileg öðrum. Þú getur prentað myndina og svörin út ef þú vilt.</p>
 
-							<span>For professionelle: L?s mere i <a style = "color: #5593c2" href = "TOOL-Erhvervsparathed2020-april.pdf" target = "_blank"> Guide for anvendelse.</a></span>
+              <p>Þetta er ekki próf, ekkert er rétt eða rangt. Niðurstaðan gagnast þér best ef þú svarar spurningunum af hreinskilni eins og staðan er raunverulega. Það má alltaf bæta sig og gera betur. </p>
+
+							<span>Fyrir fagfólk: Lestu meira í <a style = "color: #5593c2" href = "Guide for professionals - version 2.0.pdf" target = "_blank">notendahandbókinni</a></span>
 						</div>
 					  </div>
 					</div>
@@ -132,6 +136,7 @@
 					// Make the profilelinks active 
 				event_control.adClickedToButton();
 				event_control.addListenerToProfileLink();
+        let profiles = ['Þitt mat (ráðþegi)','Markmið','Mat ráðgjafa'];
 				// Create the profile for the questions// Profile array is containing all the questions of the profile
 				var profile2 = new Profile(profile_array[1],'Markmið', 2, labelsarray);
 				var profile = new Profile(profile_array[0],'Þitt mat (ráðþegi)',1,labelsarray);
@@ -191,8 +196,8 @@
 					
 					
 				</script>
-					 <textarea class = "form-control" id = "text-add" placeholder="Bem?rkninger"></textarea>
-					 <input id = "sub" class = " sub btn-success" id = 'new-top' type = "submit" value = "Videre"/>
+					 <textarea class = "form-control" id = "text-add" placeholder="Athugasemdir"></textarea>
+					 <input id = "sub" class = " sub btn-success" id = 'new-top' type = "submit" value = "Næsta"/>
 				 <!----------***** End Commentbox stuff *****------------->
 				<div class = "container btn-container">
 				
@@ -268,7 +273,7 @@
 										<div class = "name-and-date">
 										<p id = "dato"></p>
 										
-										<h3 id = "your-name">Dit navn</h3>
+										<h3 id = "your-name">Nafnið þitt</h3>
 										
 									</div>
 									<script>
@@ -295,7 +300,7 @@
 							</div>
 							
 							<div id = "comment-view">
-								<h3 class = "comment-view__title">Bem?rkninger</h3>
+								<h3 class = "comment-view__title">Athugasemdir</h3>
 								<table class = "comment-view__labels"></table>
 							</div>
 								</div>
@@ -308,8 +313,8 @@
 						 
 						  <!-- End row -->
 						 <div class = 'download-button-container'>
-							<button class = "download-btn btn-success " id = 'download-pdf'>Download</button>    
-							<button class = " download-btn btn-success " id = 'download-full-pdf'>Download med svar </button>
+							<button class = "download-btn btn-success " id = 'download-pdf'>Hlaða niður PDF skjali </button>    
+							<button class = " download-btn btn-success " id = 'download-full-pdf'>Hlaða niður PDF skjali (Full version) </button>
 							<a href = "" button class = "reset download-btn btn btn-success" id = 'reset'>Start forfra</a>
 						</div>	
 									</div> <!-- End container -->

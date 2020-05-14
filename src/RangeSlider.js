@@ -8,19 +8,18 @@ RangeSlider = function(){
         var slideFull = $('<div class = "thumb-width"></div>');
         $("#range-value"+String(i+1)).html(val);
         $('#current-val'+String(i+1)).val(val);
-        slideFull.css('width',val*12.5*2+'%');
-        alert(val*10*2);
+        slideFull.css('width',val*10*2+'%');
         $(rangeId).append(slideFull);
             $( rangeId ).slider({
                 value: val,
                 animate: true,
                 change: function(event, ui) {
                     console.log(this);
-                    let widthVal = String(ui.value*12.5*2+'%');
+                    let widthVal = String(ui.value*10*2+'%');
                     slideFull.css('width', widthVal);     
                 },
                 min: 0,
-                max: 4,
+                max: 5,
                 step: 1,
                 slide: function(event, ui){
                     $("#range-value"+String(i+1)).html(ui.value);

@@ -792,14 +792,15 @@ th {
 .footer-logo {
 	display: flex;
 	display: inline-block;
+	max-width: 200px;
 }
 
 .footer-logo:first-child {
-	margin-right: 10px;
+	margin-right: 30px;
 }
 
-.footer-logo:nth-last-child(3){
-	margin-left: 10px;
+.footer-logo:nth-last-child(2){
+	margin-right: 30px;
 }
 
 #footer-links {
