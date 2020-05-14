@@ -85,38 +85,38 @@ for(var key in inputvalue){
    questionArray = [];
    if(key == 'values3') {
       // instructions to question Målsætning
-      comment1_1 = "At turde tænke nyt, at drømme og sætte mål ";
-      comment1_2 = "Gælder også mindre beslutninger som fx at møde ind om morgenen ";
-      comment1_3 = "Gælder mindre og større valg ";
-      comment1_4 = "På sigt også fokus på en uddannelsesplan eller en plan for at få et arbejde ";
-      comment1_5 ="Omhandler valg der bringer den unge nærmere sine mål";
+      comment1_1 = " ";
+      comment1_2 = " ";
+      comment1_3 = " ";
+      comment1_4 = "";
+      comment1_5 ="";
      // Instructions to Motivation
-      comment2_1 = "Udholdenhed, disciplin";
-      comment2_2 = "Være pålidelig, gøre det der er aftalt";
-      comment2_3 = "Levere det aftalte hhv. søge aktivt efter løsninger, også hvis der opstår problemer ";
-      comment2_4 = "Gælder alle livets områder"; comment2_5 ="Komme til tiden, komme hver dag eller hver gang, overholde mødeaftaler og være mentalt til stede";
+      comment2_1 = "";
+      comment2_2 = "";
+      comment2_3 = " ";
+      comment2_4 = ""; comment2_5 ="";
       // Instructions to Robusthed
-      comment3_1 = "Vedholdenhed, arbejde med frustrationer";
-      comment3_2 = "Se de muligheder der kan bringe den unge videre";
-      comment3_3 = "Konstruktive relationer, gode fællesskaber, understøttende på vejen mod målet ";
-      comment3_4 = "Række ud efter støtte ved problemer eller for at komme videre"; comment3_5 ="Forholde sig til sagen, forblive ”på egen banehalvdel”";
+      comment3_1 = "";
+      comment3_2 = "";
+      comment3_3 = "";
+      comment3_4 = ""; comment3_5 ="";
       // Instructions to Fleksibilitet
-      comment4_1 = "Identificere problemet eller muligheden og tage initiativ";
-      comment4_2 = "Generelt, ikke ubetinget tilpasning i enhver situation";
-      comment4_3 = "Også efter ordre eller pga. udefrakommende omstændigheder";
-      comment4_4 = "Reflektere over alternativer og afklare omstændigheder for ændringer"; comment4_5 ="Når nødvendigt eller ønskværdigt. I praktikcentre: EMMA-kriteriet ”geografisk mobilitet”";
+      comment4_1 = "";
+      comment4_2 = "";
+      comment4_3 = "";
+      comment4_4 = ""; comment4_5 ="";
         // Instructions to Sociale normer
-      comment5_1 = "OBS gælder ikke ved destruktive forhold på arbejdspladsen";
-      comment5_2 = "OBS gælder ikke ved destruktive forhold på arbejdspladsen";
-      comment5_3 = "I bred forstand og samtidig være opmærksom på eget ståsted";
-      comment5_4 = "I bred forstand og under hensyntagen til egne grænser"; comment5_5 ="Omhandler konflikthåndtering i bred forstand";
-      comment5_6 ="Reflektere over forhold på arbejdspladsen";
+      comment5_1 = "";
+      comment5_2 = "";
+      comment5_3 = "";
+      comment5_4 = ""; comment5_5 ="";
+      comment5_6 ="";
         // Instructions to Min faglighed
-      comment6_1 = "Den fornødne faglighed på det givne niveau. I praktikcentre: EMMA-kriteriet ”Fagligt egnet”";
-      comment6_2 = "Kontekstafhængig: fortsætte på den faglige vej, ikke falde fra, ”faglig stabilitet”";
-      comment6_3 = "Kontekstafhængig: faglig nysgerrighed, lysten til at lære, efter- og videreuddannelse";
-      comment6_4 = "Kontekstafhængig: at kunne skifte spor. I praktikcentre: EMMA-kriteriet ”Faglig mobilitet” "; 
-      comment6_5 = "Fx fritidsjob, job, praktik eller arbejdsopgaver. I praktikcentre: EMMA-kriteriet ”Aktivt søgende” ” "; 
+      comment6_1 = "";
+      comment6_2 = "";
+      comment6_3 = "";
+      comment6_4 = " "; 
+      comment6_5 = ""; 
 
    }
    questionArray[0] = new question(comment1_1,"�g a�laga mig a� hef�um vinnusta�a (vinnusta�amenning)",inputvalue[key].val1[0]);
