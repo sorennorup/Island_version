@@ -17,7 +17,7 @@ function setProfileOnFirstLoad() {
 
 function changeButtonOnLastQuestion() {
   if(id == 6) {
-    $(".sub").val('Afslut').css('background-color','#2c2e3a');
+    $(".sub").val('Hætta').css('background-color','#2c2e3a');
   }
 }
 
@@ -37,8 +37,8 @@ function addBackground() {
   $('#accordion__heading').addClass('accordion__heading_background');
   $('#collapse-id').addClass('accordion__minus').removeClass('accordion__plussign');
 }
+
 function removeBackground() {
   $('#accordion__heading').removeClass('accordion__heading_background');
   $('#collapse-id').removeClass('accordion__minus').addClass('accordion__plussign');
-  
 }

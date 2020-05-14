@@ -102,7 +102,7 @@ div {
     z-index: 99999;
     position: absolute;
     top: 2px;
-    margin-left: 75px;
+    margin-left: 120px;
 }
 
 .accordion__plussign::after {
@@ -111,7 +111,7 @@ div {
     font-size: 30px;
     position: absolute;
     top: 2px;
-    margin-left: 75px;
+    margin-left: 120px;
 }
 
 .accordion__heading_background {
@@ -992,13 +992,13 @@ th {
 		white-space: nowrap;
 	}
 	
-	 .manualView td:nth-of-type(1):before { content: "Sociale normer"; }
-	 .manualView   td:nth-of-type(2):before { content: "MÃ¥lsÃ¦tning"; }
-	.manualView   td:nth-of-type(3):before { content: "Motivation"; }
-	.manualView   td:nth-of-type(4):before { content: "Fleksibilitet"; }
-	.manualView  td:nth-of-type(5):before { content: "Robusthed"; }
-	.manualView  td:nth-of-type(6):before { content: "Min faglighed"; }
-	
+	 .manualView td:nth-of-type(1):before { content: "Félagslegar aðstæður"; }
+	 .manualView   td:nth-of-type(2):before { content: "Markmiðasetning"; }
+	.manualView   td:nth-of-type(3):before { content: "Hvatning"; }
+	.manualView   td:nth-of-type(4):before { content: "Sveigjanleiki"; }
+	.manualView  td:nth-of-type(5):before { content: "Seigla"; }
+	.manualView  td:nth-of-type(6):before { content: "Starfshæfni"; }
+
 	.logos {
 		display: inline;
 	}

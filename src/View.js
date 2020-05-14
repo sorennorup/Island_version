@@ -34,7 +34,7 @@ View = function(){
 		 let html = '<div id = "info-box">'+
 			   ' <a style = "" class = "" href = "index.html">Svara með spurningum</a><br/> Veldu tölu á skalanum 0-5</div>'+
 				'<form action = "resultInsert.html"><div class = "manualView"  id = "resultViewManual"> </div>'+         
-				'<input id = "manual-sub"  class = "btn btn-success" type = "submit" value= "Videre" /></form>';
+				'<input id = "manual-sub"  class = "btn btn-success" type = "submit" value= "Næsta" /></form>';
 		 return html;
 	 };
 
@@ -65,16 +65,13 @@ View = function(){
 						'<img class = "footer-logo"  src = "logoer/vmst.png"  />'+
 					'</div>';
 			html +=	'<div id = "footer-links"> '+
-						'<a href = "#" class = "footer-arrow footer-link">Tak til</a>'+
-						'<a href = "TOOL-Erhvervsparathed2020-april.pdf" target="_blank" class = "footer-arrow footer-link">Guide for anvendelse (Pdf til download, Ã¥bner nyt vindue)</a>'+
-						'<a href = "https://youth-it.cool/"class = "footer-arrow footer-link-project">Youth in transition</a>'+
-						'<a href = "https://ungemedkant.dk/syddanmark/" class = "footer-arrow footer-link-project">Unge med kant Syddanmark</a>'+
-						'<a href = "https://ungemedkant.dk/hovedstaden/" class = "footer-arrow footer-link-project">Unge med kant Hovedstaden</a>'
+						'<a href = "Guide for professionals - version 2.0.pdf" target="_blank" class = "footer-arrow footer-link">Hlekkur á handbók fyrir fagaðila (opnast í nýjum glugga)</a>'
+						
 					'</div>';
 			html += '<div id = "footer__meta-info">'+
-			         '<p class = "footer__title">Erhvervsparathed â€“ en selvevaluering i dialog</p>'+
+			         '<p class = "footer__title">Mat á starfsþroska </p>'+
 
-					'<p>vs. 2.0, marts 2020</p></br>'+
+					'<p>vs. 2.0, may 2020</p></br>'+
 					'<p>Licensed under Creative Commons</p>'+
 					'<p>Attribution-NonCommercial-ShareAlike 4.0</p>'+
 					'<p>International (CC BY-NC-SA 4.0)</p>'+

@@ -11,18 +11,18 @@ PrintToPdf = function(results1,results2,results3,labelarr){
 		pdfMake.setFonts(fonts);
 		var dd = {
 			content: [
-				{ text: 'ERHVERVSPARATHED', style: 'header' },
-				{ text: '-en selvevaluering i dialog', style: 'header2' },
+				{ text: 'Mat á starfsþroska ', style: 'header' },
+				
 			{
 			style: 'tableExample',
 			table: {
 				headerRows: 1,
 				body: [labelarr,
-					[{text: 'UNG',colSpan: 6, alignment: 'left',style: 'profile1Text'}],
+					[{text: 'Þitt mat (ráðþegi)',colSpan: 6, alignment: 'left',style: 'profile1Text'}],
 					results1,
-					[{text: 'MÃ…L', colSpan: 6, alignment: 'left',style: 'profile2Text'}],
+					[{text: 'Markmið', colSpan: 6, alignment: 'left',style: 'profile2Text'}],
 					results2,
-					[{text: 'PROFESSIONEL',  colSpan: 6, alignment: 'left',style: 'profile3Text'}],
+					[{text: 'Mat ráðgjafa',  colSpan: 6, alignment: 'left',style: 'profile3Text'}],
 					results3
 				]
 			},
@@ -41,11 +41,11 @@ PrintToPdf = function(results1,results2,results3,labelarr){
 		{
 		table: {	
 			body:[	
-					[{text: 'UNG',alignment: 'left',style: 'profile1Text'}],
+					[{text: 'Þitt mat (ráðþegi)',alignment: 'left',style: 'profile1Text'}],
 					[createCommentArray(commentsArrProf1)],
-					[{text: 'MÃ…L', alignment: 'left',style: 'profile2Text'}],
+					[{text: 'Markmið', alignment: 'left',style: 'profile2Text'}],
 					[createCommentArray(commentsArrProf2)],
-					[{text: 'professionel', alignment: 'left',style: 'profile3Text'}],
+					[{text: 'Mat ráðgjafa', alignment: 'left',style: 'profile3Text'}],
 					[createCommentArray(commentsArrProf3)]
 			]
 		},
@@ -88,7 +88,7 @@ PrintToPdf = function(results1,results2,results3,labelarr){
 
 	createCommentArray = function (commentArr) {
 		let comments = [];
-		let labels = ['MÃ…LSÃ†TNING','MOTIVATION','ROBUSTHED','FLEKSIBILITET','SOCIALE NORMER','MIN FAGLIGHED'];
+		let labels = ["Félagslegar aðstæður ","Markmiðasetning","Hvatning","Sveigjanleiki","Seigla","Starfshæfni"];
 		for(let i = 0; i < labelarr.length; i++) {
 			let props = [labels[i]+'  '+commentArr[i]];
 			comments.push(props);
@@ -105,7 +105,7 @@ PrintToPdf = function(results1,results2,results3,labelarr){
 		var dd = {	
 			content: [
 				{
-					text: 'Erhvervsparathed', 
+					text: 'Mat á starfsþroska ', 
 					style: 'header'
 				},
 		
@@ -114,11 +114,11 @@ PrintToPdf = function(results1,results2,results3,labelarr){
 			table: {
 				headerRows: 1,
 				body: [labelarr,
-					[{text: 'Ung',colSpan: 6, alignment: 'left',style: 'profile1Text'}],
+					[{text: 'Þitt mat (ráðþegi)',colSpan: 6, alignment: 'left',style: 'profile1Text'}],
 					results1,
-					[{text: 'MÃ¥l', colSpan: 6, alignment: 'left',style: 'profile2Text'}],
+					[{text: 'Markmið', colSpan: 6, alignment: 'left',style: 'profile2Text'}],
 					results2,
-					[{text: 'Professionel',  colSpan: 6, alignment: 'left',style: 'profile3Text'}],
+					[{text: 'Mat ráðgjafa',  colSpan: 6, alignment: 'left',style: 'profile3Text'}],
 					results3
 				]
 			},
@@ -131,7 +131,7 @@ PrintToPdf = function(results1,results2,results3,labelarr){
 		},
 		
 		 
-		{text: 'Unge', style: 'header2'},
+		{text: 'Þitt mat (ráðþegi)', style: 'header2'},
 			
 		
 		{
@@ -149,7 +149,7 @@ PrintToPdf = function(results1,results2,results3,labelarr){
 			layout: 'headerLineOnly'
 		},
 		
-		{text: 'MÃ¥l', style: 'header2'},	
+		{text: 'Markmið', style: 'header2'},	
 		
 		{
 			style: 'tableExample',
@@ -163,7 +163,7 @@ PrintToPdf = function(results1,results2,results3,labelarr){
 			
 			layout: 'headerLineOnly'
 		},
-		{text: 'Vejleder', style: 'header2'},	
+		{text: 'Mat ráðgjafa', style: 'header2'},	
 		
 		{
 			style: 'tableExample',
