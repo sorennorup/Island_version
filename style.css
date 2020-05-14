@@ -195,7 +195,7 @@ div {
 #back::after {
 	content: "\2192";
 	position: absolute;
-	bottom: 6.15px;
+	bottom: 6.5px;
 }
 
 #back {
