@@ -65,7 +65,9 @@ View = function(){
 						'<img class = "footer-logo"  src = "logoer/vmst.png"  />'+
 					'</div>';
 			html +=	'<div id = "footer-links"> '+
-						'<a href = "Guide for professionals - version 2.0.pdf" target="_blank" class = "footer-arrow footer-link">Hlekkur á handbók fyrir fagaðila (opnast í nýjum glugga)</a>'
+						'<a href = "Guide for professionals - version 2.0.pdf" target="_blank" class = "footer-arrow footer-link">Hlekkur á handbók fyrir fagaðila (opnast í nýjum glugga)</a>'+
+						'<a href = "https://vinnumalastofnun.is/" target="_blank" class = "footer-arrow footer-link-project">vinnumalastofnun.is</a>'+
+						'<a href = "https://youth-it.cool/" target="_blank" class = "footer-arrow footer-link-project">Youth in transition</a>'
 						
 					'</div>';
 			html += '<div id = "footer__meta-info">'+
