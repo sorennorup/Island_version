@@ -17,7 +17,7 @@ function setProfileOnFirstLoad() {
 
 function changeButtonOnLastQuestion() {
   if(id == 6) {
-    $(".sub").val('HÃ¦tta').css('background-color','#2c2e3a');
+    $(".sub").val('Ljúka').css('background-color','#2c2e3a');
   }
 }
 

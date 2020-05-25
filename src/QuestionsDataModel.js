@@ -124,7 +124,7 @@ for(var key in inputvalue){
    questionArray[2] = new question( comment1_3,"Ég aðlaga mig að skipulagi og reglum vinnustaða",inputvalue[key].val1[2]);
    questionArray[3] = new question( comment1_4,"Ég á auðvelt með að vinna með ólíkum einstaklingum við ólíkar aðstæður",inputvalue[key].val1[3]);
    questionArray[4] = new question(comment1_5,"Ég legg mig fram við að afla þeirra upplýsinga sem þarf til að sinna starfi mínu",inputvalue[key].val1[4]);
-   questionArray[5] = new question(comment1_5,"Ég hef þekkingu á íslenskum vinnumarkaði (hvað er verið að spyrja um?)",inputvalue[key].val1[5]);
+   questionArray[5] = new question(comment1_5,"Ég hef þekkingu á íslenskum vinnumarkaði ",inputvalue[key].val1[5]);
 
    
    questionArray2 = [];
@@ -158,7 +158,7 @@ for(var key in inputvalue){
    questionArray6[0] = new question(comment6_1,"Ég tel mig hafa þá hæfni sem til þarf til að fara á vinnumarkað"	,inputvalue[key].val6[0]);
    questionArray6[1]= new question(comment6_2,	"Ég vil þróa færni mína betur til þess að fá starf",inputvalue[key].val6[1]);
    questionArray6[2] = new question(comment6_3,"Það sem ég læri í starfi nýtist mér víða",inputvalue[key].val6[2]);
-   questionArray6[3] = new question(comment6_4,"Ég leysi verkefni af nákvæmni",inputvalue[key].val6[3]);
+   questionArray6[3] = new question(comment6_4,"Ég leysi verkefni mín af samviskusemi",inputvalue[key].val6[3]);
    questionArray6[4] = new question(comment6_5,"Ég sinni starfi mínu vel",inputvalue[key].val6[4]);
   
    var prop = [questionArray,questionArray2,questionArray3,questionArray4,questionArray5,questionArray6];
