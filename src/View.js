@@ -73,11 +73,7 @@ View = function(){
 			html += '<div id = "footer__meta-info">'+
 			         '<p class = "footer__title">Mat á starfsþroska </p>'+
 
-					'<p>vs. 2.0, may 2020</p></br>'+
-					'<p>Licensed under Creative Commons</p>'+
-					'<p>Attribution-NonCommercial-ShareAlike 4.0</p>'+
-					'<p>International (CC BY-NC-SA 4.0)</p>'+
-					'</div>';
+					'<br/><a rel="license" href="http://creativecommons.org/licenses/by-nc/4.0/"><img alt="Creative Commons License" style="border-width:0" src="https://i.creativecommons.org/l/by-nc/4.0/88x31.png" /></a><br />This work is licensed under a <a rel="license" href="http://creativecommons.org/licenses/by-nc/4.0/">Creative Commons Attribution-NonCommercial 4.0 International License</a>.';
 		return html;
 		
 	};
