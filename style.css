@@ -475,6 +475,7 @@ button {
 	margin-bottom: 20px;
 	color: #5b9fc2;
 	text-align: center;
+	margin-left: -10px;
 }
 
 /* below is not necessary, just for style */

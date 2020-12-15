@@ -20,7 +20,7 @@ View = function(){
 	this.setTaxamoniView = function(){
 		let html = '<div class = "taxo-view">';
 		for(let i = 0; i < this.taxomoni.length; i++){
-		 html += '<p>'+this.taxomoni[i]+'<span style ="margin-left: 5px;"></span>'+i+'</p>';
+		 html += '<p>'+this.taxomoni[i]+'<span style ="margin-left: 5px;"></span></p>';
 		}
 		html += '</div>';
 		return html;  
