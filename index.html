@@ -283,12 +283,14 @@
 									</div>
 									<script>
 						(function getName() {
-  							if(sessionStorage.getItem('name') == ""){
+  							if(sessionStorage.getItem('name') === "" ){
     							sessionStorage.setItem('name','Nafnið þitt');
-  							}
+							  }
+							else if(sessionStorage.getItem('name')==='null') {
+								sessionStorage.setItem('name','Nafnið þitt');
+							}
   							document.getElementById('your-name').innerHTML = sessionStorage.getItem('name');
 						})();
-									
 									
 										
 									</script>
