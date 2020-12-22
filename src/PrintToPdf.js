@@ -1,86 +1,146 @@
 PrintToPdf = function(results1,results2,results3,labelarr){
+	this.theFontSize = 13;
 	
-  this.downloadResultsOnly = function(){
-	
-	var canvas = document.querySelector( '#myChart' );
-		
+
+	this.downloadResultsOnly = function(){
+		var canvas = document.querySelector( '#myChart' );
+		this.thisdate = function() {
+			var now = new Date();
+			return now.getDate()+'.' + parseInt(now.getMonth()+1)+' '+now.getFullYear();
+		};
 		//creates image
 		var canvasImg = canvas.toDataURL( "image/png", 1.0 );
+		
 		pdfMake.setFonts(fonts);
-		
-	
 		var dd = {
-		
-	content: [
-		
-		{text: 'Niðurstöður', style: 'header'},
-		
-		{
+			content: [
+				{ text: sessionStorage.getItem( 'name' )+' '+ this.thisdate()},
+				{ text: 'Mat á starfsþroska ', style: 'header' },
+				
+				
+			{
 			style: 'tableExample',
 			table: {
 				headerRows: 1,
 				body: [labelarr,
-						[{text: 'Þitt mat (ráðþegi)',colSpan: 6, alignment: 'left'}],
-						results1,
-						[{text: 'Markmið', colSpan: 6, alignment: 'left'}],
-
-						results2,
-						[{text: 'Mat ráðgjafa',  colSpan: 6, alignment: 'left'}],
-
-						results3
-					  ]
+					[{text: 'Þitt mat (ráðþegi)',colSpan: 6, alignment: 'left',style: 'profile1Text'}],
+					results1,
+					[{text: 'Markmið', colSpan: 6, alignment: 'left',style: 'profile2Text'}],
+					results2,
+					[{text: 'Mat ráðgjafa',  colSpan: 6, alignment: 'left',style: 'profile3Text'}],
+					results3
+				]
 			},
-				
-			layout: 'headerLineOnly'
+		
+		layout: 'headerLineOnly'
 		},
 		{
-			image:canvasImg,
-	        width: 400
-		}
-	
+		image:canvasImg,
+		width: 700,
+		margin: [-90, 0]
+		},
+		
+		
+		{text: 'Athugasemdir',style: 'header2'},
+		
+		{
+		table: {	
+			body:[	
+					[{text: 'Þitt mat (ráðþegi)',alignment: 'left',style: 'profile1Text'}],
+					[createCommentArray(commentsArrProf1)],
+					[{text: 'Markmið', alignment: 'left',style: 'profile2Text'}],
+					[createCommentArray(commentsArrProf2)],
+					[{text: 'Mat ráðgjafa', alignment: 'left',style: 'profile3Text'}],
+					[createCommentArray(commentsArrProf3)]
+			]
+		},
+		
+		layout: 'noBorders',
+		style: 'commenttext'
+	}
 	],
-		};
-	pdfMake.createPdf(dd).download();
-  };
-	
+
+		styles: {
+			header: {
+				fontSize: 25,
+				alignment: 'justify',
+				margin: [0, 9, 0, 9] ,
+			},
+			header2: {
+				fontSize: 18,
+				lineHeight: 2.0
+			},
+			commenttext: {
+				fontSize: 10,
+				lineHeight:1.5,
+			},
+			profile1Text: {
+				fontSize: 13,
+				color: '#609fc2'
+			},
+			profile2Text: {
+				fontSize: 13,
+				color: '#dfab61'
+			},
+			profile3Text: {
+				fontSize: 13,
+				color: '#001b4d',
+			}
+
+		}
+	};
+		pdfMake.createPdf(dd).download();
+	};
+
+	createCommentArray = function (commentArr) {
+		let comments = [];
+		let labels = ["Félagslegar aðstæður ","Markmiðasetning","Hvatning","Sveigjanleiki","Seigla","Starfshæfni"];
+		for(let i = 0; i < labelarr.length; i++) {
+			let props = [labels[i]+'  '+commentArr[i]];
+			comments.push(props);
+		}
+		return comments;
+	}
 	
 	this.downloadFullPDF = function() {
+		this.thisdate = function() {
+			var now = new Date();
+			return now.getDate()+'.' + parseInt(now.getMonth()+1)+' '+now.getFullYear();
+		};
 		var canvas = document.querySelector( '#myChart' );
-		
 		//creates image
 		var canvasImg = canvas.toDataURL( "image/png", 1.0 );
 		pdfMake.setFonts(fonts);
+		var dd = {	
+			content: [
+				{ text: sessionStorage.getItem( 'name' )+' '+ this.thisdate()},
+				{text: 'Mat á starfsþroska ', style: 'header'
+				},
 		
-	
-		var dd = {
-		
-	content: [
-		
-		{text: 'Resultater', style: 'header'},
-		
-		{
+			{
 			style: 'tableExample',
 			table: {
 				headerRows: 1,
 				body: [labelarr,
-						[{text: 'Þitt mat (ráðþegi)',colSpan: 6, alignment: 'left'}],
-						results1,
-						[{text: 'Markmið', colSpan: 6, alignment: 'left'}],
-
-						results2,
-						[{text: 'Mat ráðgjafa',  colSpan: 6, alignment: 'left'}],
-
-						results3
-					  ]
+					[{text: 'Þitt mat (ráðþegi)',colSpan: 6, alignment: 'left',style: 'profile1Text'}],
+					results1,
+					[{text: 'Markmið', colSpan: 6, alignment: 'left',style: 'profile2Text'}],
+					results2,
+					[{text: 'Mat ráðgjafa',  colSpan: 6, alignment: 'left',style: 'profile3Text'}],
+					results3
+				]
 			},
-				
 			layout: 'headerLineOnly'
 		},
 		{
 			image:canvasImg,
-	        width: 400
+	        width: 700,
+			margin: [-90, 0]
 		},
-		{text: 'Þitt mat (ráðþegi)', style: 'header'},	
+		
+		 
+		{text: 'Þitt mat (ráðþegi)', style: 'header2'},
+			
 		
 		{
 			style: 'tableExample',
@@ -91,12 +151,13 @@ PrintToPdf = function(results1,results2,results3,labelarr){
 				
 				fullProfile1,
 				
+				
 			},
 			
 			layout: 'headerLineOnly'
 		},
 		
-		{text: 'Markmið', style: 'header'},	
+		{text: 'Markmið', style: 'header2'},	
 		
 		{
 			style: 'tableExample',
@@ -110,7 +171,7 @@ PrintToPdf = function(results1,results2,results3,labelarr){
 			
 			layout: 'headerLineOnly'
 		},
-		{text: 'Mat ráðgjafa', style: 'header'},	
+		{text: 'Mat ráðgjafa', style: 'header2'},	
 		
 		{
 			style: 'tableExample',
@@ -130,8 +191,27 @@ PrintToPdf = function(results1,results2,results3,labelarr){
 		header: {
 			fontSize: 25,
 			bold: true,
-			alignment: 'justify'
+			alignment: 'justify',
+			marginBottom: 10,
+			margin: [0,9,0,9]
+		},
+		header2: {
+			fontSize: 20,
+			marginBottom: 5
+		},
+		commenttext: {
+			fontSize: 10	
+		},
+		profile1Text: {
+			color: '#609fc2'
+		},
+		profile2Text: {
+			color: '#dfab61'
+		},
+		profile3Text: {
+			color: '#001b4d'
 		}
+
 	}
 	
 };
@@ -139,8 +219,10 @@ PrintToPdf = function(results1,results2,results3,labelarr){
 		pdfMake.createPdf(dd).download();
     
 	
+	
 	};
             
+
 	
 		
 };

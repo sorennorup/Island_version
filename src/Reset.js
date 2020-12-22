@@ -57,12 +57,18 @@
           }
            if(sessionStorage.value6id3 === undefined){
                           sessionStorage.value6id3 = 0;
-          }    
+          }
+          if(sessionStorage.comment === undefined){
+                    sessionStorage.comment = "empty space";
+          }
           
       };
-          
+
+      this.resetEveryting = function() {
+           sessionStorage.clear();
+      }     
  };
- 
+
  var resetAll = new Reset();
  resetAll.resetResultView();
  

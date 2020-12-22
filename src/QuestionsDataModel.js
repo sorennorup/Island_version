@@ -5,11 +5,28 @@ function toZeroArray(values){
     return arr;
  }
   else {
-  
+   
    return  values.split(",");}
  }
- 
- var values_profile1 = {
+ /******Creating comment array for the PDF version *********/
+ let commentsArrProf1 = [];
+ let commentsArrProf2 = [];
+ let commentsArrProf3 = [];
+ for(var i = 1; i < 7; i++) {
+   let comment = sessionStorage.getItem('comment'+i+"profile1");
+      commentsArrProf1.push(comment);
+ }
+ for(var i = 1; i < 7; i++) {
+   let comment = sessionStorage.getItem('comment'+i+"profile2");
+      commentsArrProf2.push(comment);
+}
+for(var i = 1; i < 7; i++) {
+   let comment = sessionStorage.getItem('comment'+i+"profile3");
+   commentsArrProf3.push(comment);
+}
+/**************End comment array for PDF version *********/
+
+var values_profile1 = {
     "val1" : toZeroArray(sessionStorage.values1id1),
     "val2" : toZeroArray(sessionStorage.values2id1),
     "val3" : toZeroArray(sessionStorage.values3id1),
@@ -45,57 +62,108 @@ function toZeroArray(values){
  
  //Question 1
 
- profile_array = [];
-  
-  for(var key in inputvalue){
+
+ 
+ // initializes the instructions variables
+ let comment1_1 = "",comment1_2 = " ", comment1_3 = " ", 
+ comment1_4 = " ", comment1_5 ="";
+ let comment2_1 = "",comment2_2 = " ", comment2_3 = " ", 
+ comment2_4 = " ", comment2_5 ="";
+ let comment3_1 = "",comment3_2 = " ", comment3_3 = " ", 
+ comment3_4 = " ", comment3_5 ="";
+ let comment4_1 = "",comment4_2 = " ", comment4_3 = " ", 
+ comment4_4 = " ", comment4_5 ="";
+ let comment5_1 = "",comment5_2 = " ", comment5_3 = " ", 
+ comment5_4 = " ", comment5_5 ="",comment5_6 ="" ;
+ let comment6_1 = "",comment6_2 = " ", comment6_3 = " ", 
+ comment6_4 = " ", comment6_5 ="";
+ 
+questionArray = [];
+profile_array = [];
+
+for(var key in inputvalue){
    questionArray = [];
+   if(key == 'values3') {
+      // instructions to question MÃ¥lsÃ¦tning
+      comment1_1 = " ";
+      comment1_2 = " ";
+      comment1_3 = " ";
+      comment1_4 = "";
+      comment1_5 ="";
+     // Instructions to Motivation
+      comment2_1 = "";
+      comment2_2 = "";
+      comment2_3 = " ";
+      comment2_4 = ""; comment2_5 ="";
+      // Instructions to Robusthed
+      comment3_1 = "";
+      comment3_2 = "";
+      comment3_3 = "";
+      comment3_4 = ""; comment3_5 ="";
+      // Instructions to Fleksibilitet
+      comment4_1 = "";
+      comment4_2 = "";
+      comment4_3 = "";
+      comment4_4 = ""; comment4_5 ="";
+        // Instructions to Sociale normer
+      comment5_1 = "";
+      comment5_2 = "";
+      comment5_3 = "";
+      comment5_4 = ""; comment5_5 ="";
+      comment5_6 ="";
+        // Instructions to Min faglighed
+      comment6_1 = "";
+      comment6_2 = "";
+      comment6_3 = "";
+      comment6_4 = " "; 
+      comment6_5 = ""; 
+
+   }
+   questionArray[0] = new question(comment1_1,"Ég aðlaga mig að hefðum vinnustaða (vinnustaðamenning)",inputvalue[key].val1[0]);
+   questionArray[1]=  new question(comment1_2,"Framkoma mín og hegðun er í samræmi við viðmið og þarfir vinnustaða",inputvalue[key].val1[1]);
+   questionArray[2] = new question( comment1_3,"Ég aðlaga mig að skipulagi og reglum vinnustaða",inputvalue[key].val1[2]);
+   questionArray[3] = new question( comment1_4,"Ég á auðvelt með að vinna með ólíkum einstaklingum við ólíkar aðstæður",inputvalue[key].val1[3]);
+   questionArray[4] = new question(comment1_5,"Ég legg mig fram við að afla þeirra upplýsinga sem þarf til að sinna starfi mínu",inputvalue[key].val1[4]);
+   questionArray[5] = new question(comment1_5,"Ég hef þekkingu á íslenskum vinnumarkaði ",inputvalue[key].val1[5]);
+
    
-
- questionArray[0] = new question("","Ég skil menningu innan vinnustaða og aðlaga mig að henni",inputvalue[key].val1[0]);
- questionArray[1]= new question("","Framkoma mín og hegðun er í samræmi við viðmið og þarfir vinnustaða ",inputvalue[key].val1[1]);
- questionArray[2] = new question( "","Ég aðlaga mig að skipuriti og reglum vinnustaða ",inputvalue[key].val1[2]);
- questionArray[3] = new question("","Ég á auðvelt með að vinna með ólíkum einstaklingum við ólíkar aðstæður",inputvalue[key].val1[3]);
- questionArray[4] = new question("","Ég legg mig fram við að afla viðeigandi upplýsinga ",inputvalue[key].val1[4]);
+   questionArray2 = [];
+   questionArray2[0] = new question(comment2_1,"Ég er tilbúin/n að setja mér markmið um framtíðina",inputvalue[key].val2[0]);
+   questionArray2[1]= new question(comment2_2,"Ég geri mér grein fyrir því að ákvarðanir mínar hafa áhrif á framtíðina",inputvalue[key].val2[1]);
+   questionArray2[2]= new question(comment2_3,"Ég er tilbúin/n að kanna þá náms- og starfsmöguleika sem ég hef úr að velja",inputvalue[key].val2[2]);
+   questionArray2[3]= new question(comment2_4,"Ég er tilbúin/n í áskoranir og krefjandi verkefni í námi",inputvalue[key].val2[3]);
   
-  questionArray2 = [];
- questionArray2[0] = new question("","Ég er reiðubúin/n að setja mér markmið um framtíðina",inputvalue[key].val2[0]);
- questionArray2[1]= new question("","Ég geri mér grein fyrir því hvernig val mitt hefur áhrif á framtíð mína",inputvalue[key].val2[1]);
- questionArray2[2]= new question("","Ég er tilbúin/n að kanna þá möguleika sem ég hef úr að velja",inputvalue[key].val2[1]);
- questionArray2[3]= new question("","Ég er tilbúin/n í áskoranir og krefjandi verkefni í starfi",inputvalue[key].val2[1]);
  
- questionArray3 = [];
+   questionArray3 = [];
+   questionArray3[0] = new question(comment3_1,	"Ég mæti vel í vinnu og á réttum tíma"	,inputvalue[key].val3[0]);
+   questionArray3[1]= new question(comment3_2,	"Ég viðheld áhuga mínum í starfi",inputvalue[key].val3[1]);
+   questionArray3[2] = new question(comment3_3,"Það er hægt að treysta á mig í starfi",inputvalue[key].val3[2]);
+   questionArray3[3] = new question(comment3_4,"Ég tek ábyrgð á starfi mínu á vinnustað",inputvalue[key].val3[3]);
+ 
+ 
+   questionArray4 = [];
+   questionArray4[0] = new question(comment4_1,"Ég er sveigjanleg/ur varðandi staðsetningu vinnustaðar"	,inputvalue[key].val4[0]);
+   questionArray4[1]= new question(comment4_2,"Ég sýni frumkvæði í starfi",inputvalue[key].val4[1]);
+   questionArray4[2] = new question(comment4_3,"Ég get aðlagað mig að mismunandi aðstæðum á vinnustað ",inputvalue[key].val4[2]);
+   questionArray4[3] = new question(comment4_4,"Ég er skapandi/Ég hugsa út fyrir kassann",inputvalue[key].val4[3]);
+ 
 
- questionArray3[0] = new question("",	"Ég mæti vel í vinnu og á réttum tíma"	,inputvalue[key].val3[0]);
- questionArray3[1]= new question("",	"Ég hvet sjálfa/n mig áfram í starfi",inputvalue[key].val3[1]);
- questionArray3[2] = new question("","Ég er áreiðanleg/ur í starfi",inputvalue[key].val3[2]);
- questionArray3[3] = new question("","Ég tek ábyrgð á mínum verkefnum á vinnustað ",inputvalue[key].val3[3]);
+   questionArray5 = [];
+   questionArray5[0] = new question(comment5_1,"Ég gefst ekki upp, ég reyni aftur"	,inputvalue[key].val5[0]);
+   questionArray5[1] = new question(comment5_2,"Ég tek ábyrgð á mínum aðstæðum  "	,inputvalue[key].val5[1]);
+   questionArray5[2] = new question(comment5_3,"Ég er lausnamiðuð/aður"	,inputvalue[key].val5[2]);
+   questionArray5[3] = new question(comment5_4,"Ég tekst á við mótlæti "	,inputvalue[key].val5[3]);
  
-questionArray4 = [];
- questionArray4[0] = new question("","Ég er sveigjanleg/ur varðandi staðsetningu vinnustaðar "	,inputvalue[key].val4[0]);
- questionArray4[1]= new question("","Ég sýni frumkvæði og framkvæmi í starfi",inputvalue[key].val4[1]);
- questionArray4[2] = new question("","Ég get aðlagað mig að mismunandi aðstæðum á vinnustað ",inputvalue[key].val4[2]);
-
- 
-questionArray5 = [];
- questionArray5[0] = new question("","Ég gefst ekki upp, ég reyni aftur"	,inputvalue[key].val5[0]);
- questionArray5[1]= new question("",	"Ég tek ábyrgð á mínum aðstæðum",inputvalue[key].val5[1]);
- questionArray5[2] = new question("","Ég er lausnamiðuð/aður",inputvalue[key].val5[2]);
-  questionArray5[3] = new question("","Ég tekst á við mótlæti",inputvalue[key].val5[3]);
- 
- questionArray6 = [];
- questionArray6[0] = new question("","Ég hef þá starfshæfni sem til þarf "	,inputvalue[key].val6[0]);
- questionArray6[1]= new question("",	"Ég met færni mína með tilliti til þeirrar hæfni sem þörf er á fyrir tiltekið starf",inputvalue[key].val6[1]);
- questionArray6[2] = new question("","Ég vil þróa færni mína betur",inputvalue[key].val6[2]);
-  questionArray6[3] = new question("","Ég nýti starfshæfni mína víða",inputvalue[key].val6[3]);
-  questionArray6[4] = new question("","Ég vinn af nákvæmni",inputvalue[key].val6[4]);
+   questionArray6 = [];
+   questionArray6[0] = new question(comment6_1,"Ég tel mig hafa þá hæfni sem til þarf til að fara á vinnumarkað"	,inputvalue[key].val6[0]);
+   questionArray6[1]= new question(comment6_2,	"Ég vil þróa færni mína betur til þess að fá starf",inputvalue[key].val6[1]);
+   questionArray6[2] = new question(comment6_3,"Það sem ég læri í starfi nýtist mér víða",inputvalue[key].val6[2]);
+   questionArray6[3] = new question(comment6_4,"Ég leysi verkefni mín af samviskusemi",inputvalue[key].val6[3]);
+   questionArray6[4] = new question(comment6_5,"Ég sinni starfi mínu vel",inputvalue[key].val6[4]);
   
-  var prop = [questionArray,questionArray2,questionArray3,questionArray4,questionArray5,questionArray6];
+   var prop = [questionArray,questionArray2,questionArray3,questionArray4,questionArray5,questionArray6];
   
-  profile_array.push(prop);
+   profile_array.push(prop);
  
     }
-  
- let taxo = ['Á ekki við ','Mjög ósammála','Frekar ósammála','Hlutlaus','Frekar sammála']; 
- let intromessage = "Smelltu á viðeigandi hlekk til að byrja ";
- let downloadBtn1 = "Hlaða niður PDF skjali";
- let downloadBtn2 = "Hlaða niður PDF skjali(full version) "
+let taxo = ['Ikke vigtigt','Vil gerne','PrÃ¸ver','I gang','Godt pÃ¥ vej','Styr pÃ¥ det'];
