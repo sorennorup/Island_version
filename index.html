@@ -35,7 +35,15 @@
 		if(id === null){
   			id =1;
 		}
-			
+
+	  (function setName() {
+        if(sessionStorage.getItem('firstload')===null){
+            name = prompt('IF YOU WANT YOU CAN INSERT YOUR NAME OR PSEUDONYM HERE \n\n Your personal data will not be saved or shared. Use Chrome, Firefox or safari.','');
+            sessionStorage.setItem('firstload','true');
+            sessionStorage.setItem('name',name);
+            window.location.reload();
+        }
+      })();
 	</script>
 		<body id = "print-body">
 			<div class = "container">
@@ -271,11 +279,16 @@
 										<div class = "name-and-date">
 										<p id = "dato"></p>
 										
-										<h3 id = "your-name">Nafnið þitt</h3>
-										
+										<h3 id = "your-name"></h3>	
 									</div>
 									<script>
-							
+						(function getName() {
+  							if(sessionStorage.getItem('name') == ""){
+    							sessionStorage.setItem('name','Nafnið þitt');
+  							}
+  							document.getElementById('your-name').innerHTML = sessionStorage.getItem('name');
+						})();
+									
 									
 										
 									</script>

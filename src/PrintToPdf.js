@@ -1,17 +1,22 @@
 PrintToPdf = function(results1,results2,results3,labelarr){
 	this.theFontSize = 13;
 	
+
 	this.downloadResultsOnly = function(){
 		var canvas = document.querySelector( '#myChart' );
-		
-
+		this.thisdate = function() {
+			var now = new Date();
+			return now.getDate()+'.' + parseInt(now.getMonth()+1)+' '+now.getFullYear();
+		};
 		//creates image
 		var canvasImg = canvas.toDataURL( "image/png", 1.0 );
 		
 		pdfMake.setFonts(fonts);
 		var dd = {
 			content: [
+				{ text: sessionStorage.getItem( 'name' )+' '+ this.thisdate()},
 				{ text: 'Mat á starfsþroska ', style: 'header' },
+				
 				
 			{
 			style: 'tableExample',
@@ -58,7 +63,8 @@ PrintToPdf = function(results1,results2,results3,labelarr){
 		styles: {
 			header: {
 				fontSize: 25,
-				alignment: 'justify'
+				alignment: 'justify',
+				margin: [0, 9, 0, 9] ,
 			},
 			header2: {
 				fontSize: 18,
@@ -97,16 +103,18 @@ PrintToPdf = function(results1,results2,results3,labelarr){
 	}
 	
 	this.downloadFullPDF = function() {
-		
+		this.thisdate = function() {
+			var now = new Date();
+			return now.getDate()+'.' + parseInt(now.getMonth()+1)+' '+now.getFullYear();
+		};
 		var canvas = document.querySelector( '#myChart' );
 		//creates image
 		var canvasImg = canvas.toDataURL( "image/png", 1.0 );
 		pdfMake.setFonts(fonts);
 		var dd = {	
 			content: [
-				{
-					text: 'Mat á starfsþroska ', 
-					style: 'header'
+				{ text: sessionStorage.getItem( 'name' )+' '+ this.thisdate()},
+				{text: 'Mat á starfsþroska ', style: 'header'
 				},
 		
 			{
@@ -184,7 +192,8 @@ PrintToPdf = function(results1,results2,results3,labelarr){
 			fontSize: 25,
 			bold: true,
 			alignment: 'justify',
-			marginBottom: 10
+			marginBottom: 10,
+			margin: [0,9,0,9]
 		},
 		header2: {
 			fontSize: 20,
